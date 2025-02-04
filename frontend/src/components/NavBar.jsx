@@ -16,9 +16,9 @@ const NavBar = () => {
     setCartItems({})
   }
   return (
-    <div className='flex items-center justify-between py-5 font-medium h-40'>
+    <div className='relative flex items-center justify-between py-5 font-medium h-40'>
       <Link to='/'>
-      <img src={assets.lunaramaison} alt="" className='w-40 h-40 pt-4' />
+      <img src={assets.lunaramaison} alt="" className='w-40 h-40 pt-4 absolute left-[-40px] top-0' />
       </Link>
      
       {/* <h1>LUNARA MAISON</h1> */}
