@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, Suspense, lazy } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "./Title";
 import ProductItem from "./ProductItem";
-import Loading from "./Loading";
+import { LoadingOne } from "./Loading";
 
 const LatestCollection = () => {
   const { products, isLoading } = useContext(ShopContext);
@@ -14,7 +14,7 @@ const LatestCollection = () => {
 
   if(isLoading) {
     return (
-      <Loading/>
+      <LoadingOne/>
     )
   }
 
