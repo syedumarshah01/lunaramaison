@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
-import {Routes, Route} from 'react-router-dom'
+import React, { useContext, useState, useEffect } from 'react'
+
+import {Routes, Route, useLocation} from 'react-router-dom'
 import Collection from './pages/Collection'
 import About from './pages/About'
 import Home from './pages/Home'
@@ -16,12 +17,51 @@ import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { ShopContext } from './context/ShopContext'
 
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible')
+      observer.unobserve(entry.target)
+    }
+  })
+}, {threshold: 0.1})
+
+
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return null;
+}
+
+
 const App = () => {
+
+  useEffect(() => {
+    const onPageLoad = () => {
+    const scrollElement = document.querySelector('.scroll-element')
+    console.log(scrollElement)
+    observer.observe(scrollElement)      
+    }
+
+    if(document.readyState === 'complete') {
+      onPageLoad()
+    } else {
+      window.addEventListener('load', onPageLoad, false)
+      return () => window.removeEventListener('load', onPageLoad)
+    }
+  }, [])
 
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <ToastContainer />
       <>
+      <ScrollToTop/>
       <NavBar />
       <SearchBar />
 
@@ -39,6 +79,7 @@ const App = () => {
       </Routes>
 
       <Footer />
+
       </>
       
     </div>
