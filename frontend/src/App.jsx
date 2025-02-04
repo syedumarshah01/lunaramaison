@@ -25,7 +25,7 @@ const observer = new IntersectionObserver((entries, observer) => {
       observer.unobserve(entry.target)
     }
   })
-}, {threshold: 0.1})
+}, {threshold: 0.2})
 
 
 
@@ -44,9 +44,10 @@ const App = () => {
 
   useEffect(() => {
     const onPageLoad = () => {
-    const scrollElement = document.querySelector('.scroll-element')
-    console.log(scrollElement)
-    observer.observe(scrollElement)      
+    const latestCollection = document.querySelector('.scroll-element-latest-collection')
+    const bestSellers = document.querySelector('.scroll-element-best-seller')
+    observer.observe(latestCollection) 
+    observer.observe(bestSellers)     
     }
 
     if(document.readyState === 'complete') {

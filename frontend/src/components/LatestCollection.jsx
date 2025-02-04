@@ -15,7 +15,7 @@ const LatestCollection = () => {
 
   return (
     
-    <div className="my-10 scroll-element">
+    <div className="my-10 scroll-element-latest-collection">
       
       <div className="text-center py-8 text-3xl">
         <Title text1={"LATEST"} text2={"COLLECTION"} />
@@ -24,10 +24,6 @@ const LatestCollection = () => {
           industry.
         </p>
       </div>
-
-      {/* {
-        isLoading ? <LoadingOne/> : null
-      } */}
 
       {/* Rendering Products */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">

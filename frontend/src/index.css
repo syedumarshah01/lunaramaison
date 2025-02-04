@@ -117,17 +117,27 @@ hr {
    }
    
 
-.scroll-element {
+.scroll-element-latest-collection {
     opacity: 0;
-    transform: translateY(80%);
+    transform: translateY(100%);
     transition: opacity 1s ease, transform 1s ease;
 }
 
-.scroll-element.visible {
+.scroll-element-latest-collection.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
+.scroll-element-best-seller {
+    opacity: 0;
+    transform: translateX(-80%);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.scroll-element-best-seller.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 
    
