@@ -21,7 +21,7 @@ import { ShopContext } from './context/ShopContext'
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
-      entry.target.classList.add('visible')
+      entry.target.classList.add('visible')}
       
   })
 }, {threshold: 0.2})
