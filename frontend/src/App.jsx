@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useRef } from 'react'
 
 import {Routes, Route, useLocation} from 'react-router-dom'
 import Collection from './pages/Collection'
@@ -18,14 +18,14 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ShopContext } from './context/ShopContext'
 
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('visible')
-      observer.unobserve(entry.target)
-    }
-  })
-}, {threshold: 0.2})
+// const observer = new IntersectionObserver((entries, observer) => {
+//   entries.forEach(entry => {
+//     if(entry.isIntersecting) {
+//       entry.target.classList.add('visible')
+//       observer.unobserve(entry.target)
+//     }
+//   })
+// }, {threshold: 0.2})
 
 
 
@@ -42,21 +42,22 @@ function ScrollToTop() {
 
 const App = () => {
 
-  useEffect(() => {
-    const onPageLoad = () => {
-    const latestCollection = document.querySelector('.scroll-element-latest-collection')
-    const bestSellers = document.querySelector('.scroll-element-best-seller')
-    observer.observe(latestCollection) 
-    observer.observe(bestSellers)     
-    }
+  // useEffect(() => {
+  //   const onPageLoad = () => {
+  //   const latestCollection = document.querySelector('.scroll-element-latest-collection')
+  //   const bestSellers = document.querySelector('.scroll-element-best-seller')
+  //   observer.observe(latestCollection) 
+  //   observer.observe(bestSellers)     
+  //   }
 
-    if(document.readyState === 'complete') {
-      onPageLoad()
-    } else {
-      window.addEventListener('load', onPageLoad, false)
-      return () => window.removeEventListener('load', onPageLoad)
-    }
-  }, [])
+  //   if(document.readyState === 'complete') {
+  //     onPageLoad()
+  //   } else {
+  //     window.addEventListener('load', onPageLoad, false)
+  //     return () => window.removeEventListener('load', onPageLoad)
+  //   }
+  // }, [])
+
 
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>

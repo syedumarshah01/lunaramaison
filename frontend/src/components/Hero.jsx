@@ -1,7 +1,5 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Carousel} from 'react-responsive-carousel'
 
 const Hero = () => {
   return (
@@ -22,15 +20,7 @@ const Hero = () => {
         </div>
 
         {/* Hero Right Side */}
-        <Carousel autoPlay='true' interval={6000} className='w-full sm:w-1/2'>
         <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
-        </Carousel>
-        
-      
     </div>
   )
 }
