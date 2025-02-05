@@ -7,7 +7,7 @@ const Footer = () => {
     <div>
       <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
         <div>
-            <img className='mb-5 w-32 relative bottom-2' src={assets.lunaramaison} alt=""/>
+            <img className='mb-5 w-32 relative bottom-2 left-[-25px]' src={assets.lunaramaison} alt=""/>
             <p className='w-full md:w-2/3 text-gray-600'>
                 Lorem Ipsum is a dummy piece of text used by typewriting and other industries mostly for testing purposes.
             </p>
@@ -40,6 +40,8 @@ const Footer = () => {
             Copyright 2025 lunaramaison.com - All Rights Reserved.
         </p>
       </div>
+
+      {/* <div className="h-14 bg-gradient-to-r from-cyan-500 to-blue-500"></div> */}
     </div>
   )
 }
