@@ -15,19 +15,6 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ShopContext } from './context/ShopContext'
-
-
-// const observer = new IntersectionObserver((entries, observer) => {
-//   entries.forEach(entry => {
-//     if(entry.isIntersecting) {
-//       entry.target.classList.add('visible')
-//       observer.unobserve(entry.target)
-//     }
-//   })
-// }, {threshold: 0.2})
-
-
 
 function ScrollToTop() {
   const location = useLocation();
