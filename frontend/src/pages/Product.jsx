@@ -10,6 +10,7 @@ const Product = () => {
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
+  const [color, setColor] = useState('')
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -63,26 +64,74 @@ const Product = () => {
             {currency}
             {productData.price}
           </p>
-          <p className="mt-5 text-gray-500 md:w-4/5">
+          {/* <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
-          </p>
-          <div className="flex flex-col gap-4 my-8">
-            <p>Select Size</p>
-            <div className="flex gap-2">
-              {productData.sizes.map((item, index) => (
-                <button
-                  onClick={() => setSize(item)}
-                  className={`border py-2 px-4 bg-gray-100 ${
-                    item === size ? "border-orange-500" : ""
-                  }`}
-                  key={index}>
-                  {item}
-                </button>
-              ))}
-            </div>
+          </p> */}
+
+        {productData.colors.length > 0 && productData.sizes.length > 0 ? 
+        <>
+        <div className='flex flex-col gap-4 my-8'>
+        <p>Select Color</p>
+        <div className='flex gap-2'>
+          {
+            productData.colors.map((item, index) => (
+              <button key={index} onClick={() => setColor(item)} className={`border py-2 px-4 bg-gray-100 ${
+                item === color ? "border-orange-500" : ""
+              }`}>
+                {item}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+        
+      <div className="flex flex-col gap-4 my-8">
+          <p>Select Size</p>
+          <div className="flex gap-2">
+            {productData.sizes.map((item, index) => (
+              <button
+                onClick={() => setSize(item)}
+                className={`border py-2 px-4 bg-gray-100 ${
+                  item === size ? "border-orange-500" : ""
+                }`}
+                key={index}>
+                {item}
+              </button>
+            ))}
           </div>
+        </div> </>: productData.colors.length > 0 ? 
+        <div className='flex flex-col gap-4 my-8'>
+        <p>Select Color</p>
+        <div className='flex gap-2'>
+          {
+            productData.colors.map((item, index) => (
+              <button key={index} onClick={() => setColor(item)} className={`border py-2 px-4 bg-gray-100 ${
+                item === color ? "border-orange-500" : ""
+              }`}>
+                {item}
+              </button>
+            ))
+          }
+        </div>
+      </div>: <div className="flex flex-col gap-4 my-8">
+          <p>Select Size</p>
+          <div className="flex gap-2">
+            {productData.sizes.map((item, index) => (
+              <button
+                onClick={() => setSize(item)}
+                className={`border py-2 px-4 bg-gray-100 ${
+                  item === size ? "border-orange-500" : ""
+                }`}
+                key={index}>
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>}
+          
+          
           <button
-            onClick={() => addToCart(productData._id, size)}
+            onClick={() => addToCart(productData._id, size, color)}
             className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
           >
             ADD TO CART
@@ -104,22 +153,7 @@ const Product = () => {
         </div>
         <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
           <p>
-            Permission is hereby granted, free of charge, to any person
-            obtaining a copy of this software and associated documentation files
-            (the "Software"), to deal in the Software without restriction,
-            including without limitation the rights to use, copy, modify, merge,
-            publish, distribute, sublicense, and/or sell copies of the Software,
-            and to permit persons to whom the Software is furnished to do so,
-            subject to the following conditions:
-          </p>
-          <p>
-            Permission is hereby granted, free of charge, to any person
-            obtaining a copy of this software and associated documentation files
-            (the "Software"), to deal in the Software without restriction,
-            including without limitation the rights to use, copy, modify, merge,
-            publish, distribute, sublicense, and/or sell copies of the Software,
-            and to permit persons to whom the Software is furnished to do so,
-            subject to the following conditions:
+            {productData.description}
           </p>
         </div>
       </div>

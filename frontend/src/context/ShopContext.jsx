@@ -18,29 +18,70 @@ const ShopContextProvider = (props) => {
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
-    const addToCart = async (itemId, size) => {
-        if(!size) {
-            toast.error('Select Product Size')
+    const addToCart = async (itemId, size, color) => {
+        let product = products.filter((item) => item._id === itemId)[0]
+        if(product.sizes.length && !size) {
+            toast.error("Select Product Size")
             return
-        }        
-        let cartData = structuredClone(cartItems)
+        } else if(product.sizes.length && size) {
+            let cartData = structuredClone(cartItems)
 
-        if(cartData[itemId]) {
-            if(cartData[itemId][size]) {
-                cartData[itemId][size] += 1
+            if(cartData[itemId]) {
+                if(cartData[itemId][size]) {
+                    cartData[itemId][size] += 1
+                } else {
+                    cartData[itemId][size] = 1
+                }
             } else {
+                cartData[itemId] = {}
                 cartData[itemId][size] = 1
             }
-        } else {
-            cartData[itemId] = {}
-            cartData[itemId][size] = 1
+
+            setCartItems(cartData)
+        }
+        
+        if (product.colors.length && !color){
+            toast.error("Select Product Color")
+            return
+        } else if(product.colors.length && color) {
+            let cartData = structuredClone(cartItems)
+
+            if(cartData[itemId]) {
+                if(cartData[itemId][color]) {
+                    cartData[itemId][color] += 1
+                } else {
+                    cartData[itemId][color] = 1
+                }
+            } else {
+                cartData[itemId] = {}
+                cartData[itemId][color] = 1
+            }
+
+            setCartItems(cartData)
         }
 
-        setCartItems(cartData)
+        // if(!size) {
+        //     toast.error('Select Product Size')
+        //     return
+        // }        
+        // let cartData = structuredClone(cartItems)
+
+        // if(cartData[itemId]) {
+        //     if(cartData[itemId][size]) {
+        //         cartData[itemId][size] += 1
+        //     } else {
+        //         cartData[itemId][size] = 1
+        //     }
+        // } else {
+        //     cartData[itemId] = {}
+        //     cartData[itemId][size] = 1
+        // }
+
+        // setCartItems(cartData)
 
         if(token) {
             try {
-                const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size}, {headers: {token}})
+                const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size, color}, {headers: {token}})
                 if(response.data.success) {
                     toast.success(response.data.message)
                 }

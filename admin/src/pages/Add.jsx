@@ -18,6 +18,7 @@ const Add = ({token}) => {
   const [subCategory, setSubCategory] = useState('Silver')
   const [bestseller, setBestseller] = useState(false)
   const [sizes, setSizes] = useState([])
+  const [colors, setColors] = useState([])
 
   const onSumbitHandler = async (e) => {
     e.preventDefault()
@@ -33,6 +34,7 @@ const Add = ({token}) => {
       formData.append("subCategory", subCategory)
       formData.append("bestseller", bestseller)
       formData.append("sizes", JSON.stringify(sizes))
+      formData.append("colors", JSON.stringify(colors))
 
       image1 && formData.append("image1", image1)
       image2 && formData.append("image2", image2)
@@ -50,6 +52,8 @@ const Add = ({token}) => {
         setImage3(false)
         setImage4(false)
         setPrice('')
+        setColors([])
+        setSizes([])
       } else {
         toast.error(response.data.message)
       }
@@ -114,6 +118,21 @@ const Add = ({token}) => {
             <option value="Golden">Golden</option>
             <option value="Silver">Silver</option>
           </select>
+        </div>
+
+        <div>
+          <p className='mb-2'>Product Color</p>
+          <input className='w-full px-3 py-2 sm:w-[120px] mt-1' onBlur={(e) => {
+              setColors(e.target.value.length > 0 ? [...colors, e.target.value] : colors)
+          }} type="text" placeholder='Color One'/>
+
+          <input className='w-full px-3 py-2 sm:w-[120px] mt-1' onBlur={(e) => {
+              setColors(e.target.value.length > 0 ? [...colors, e.target.value] : colors)
+          }} type="text" placeholder='Color Two'/>
+
+          <input className='w-full px-3 py-2 sm:w-[120px] mt-1' onBlur={(e) => {
+              setColors(e.target.value.length > 0 ? [...colors, e.target.value] : colors)
+          }} type="text" placeholder='Color Three'/>
         </div>
 
         <div>
