@@ -3,7 +3,6 @@ import productModel from '../models/productModel.js'
 // Function for add product
 
 const addProduct = async (req, res) => {
-    console.log(req.body)
     try {        
         const { name, description, price, category, subCategory, sizes, colors, bestseller } = req.body
 
@@ -50,9 +49,15 @@ const addProduct = async (req, res) => {
 
 const listProducts = async (req, res) => {
     try {
-        const products = await productModel.find({})
-        console.log(products)
-        res.json({success: true, products})
+
+        const {fetchLimit, offset} = req.body
+        const products = await productModel.find({}).skip(offset).limit(fetchLimit)
+        if(products.length > 0) {
+            res.json({success: true, products})
+        } else {
+            res.json({success: true, products})
+        }
+        
 
     } catch (error) {
         console.log(error)
