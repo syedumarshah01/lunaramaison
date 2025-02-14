@@ -7,25 +7,37 @@ export const ShopContext = createContext()
 
 const ShopContextProvider = (props) => {
     
-    const currency = '$'
+    const fetchLimit = 2
+    const currency = 'PKR'
     const delivery_fee = 10
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const [offset, setOffset] = useState(0)
     const [search, setSearch] = useState('')
     const [showSearch, setShowSearch] = useState(false)
     const [cartItems, setCartItems] = useState({})
     const [products, setProducts] = useState([])
     const [token, setToken] = useState('')
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
     const addToCart = async (itemId, size, color) => {
+        let cartData = structuredClone(cartItems)
+        const sizeAndColor = `${size} ${color}`
         let product = products.filter((item) => item._id === itemId)[0]
-        if(product.sizes.length && !size) {
-            toast.error("Select Product Size")
-            return
-        } else if(product.sizes.length && size) {
-            let cartData = structuredClone(cartItems)
 
+        if((product.sizes.length && product.colors.length) && (size && color)) {
+            if(cartData[itemId]) {
+                if(cartData[itemId][sizeAndColor]) {
+                    cartData[itemId][sizeAndColor] += 1
+                } else {
+                    cartData[itemId][sizeAndColor] = 1
+                }
+            } else {
+                cartData[itemId] = {}
+                cartData[itemId][sizeAndColor] = 1
+            }
+            setCartItems(cartData)
+        } else if((product.sizes.length && !product.colors.length) && size) {
             if(cartData[itemId]) {
                 if(cartData[itemId][size]) {
                     cartData[itemId][size] += 1
@@ -36,16 +48,8 @@ const ShopContextProvider = (props) => {
                 cartData[itemId] = {}
                 cartData[itemId][size] = 1
             }
-
             setCartItems(cartData)
-        }
-        
-        if (product.colors.length && !color){
-            toast.error("Select Product Color")
-            return
-        } else if(product.colors.length && color) {
-            let cartData = structuredClone(cartItems)
-
+        } else if((product.colors.length && !product.sizes.length) && color) {
             if(cartData[itemId]) {
                 if(cartData[itemId][color]) {
                     cartData[itemId][color] += 1
@@ -56,9 +60,49 @@ const ShopContextProvider = (props) => {
                 cartData[itemId] = {}
                 cartData[itemId][color] = 1
             }
-
             setCartItems(cartData)
+        } else {
+            toast.error("Missing Data")
+            return
         }
+
+
+        // if(product.sizes.length && !size) {
+        //     toast.error("Select Product Size")
+        //     return
+        // } else if(product.sizes.length && size) {
+        //     if(cartData[itemId]) {
+        //         if(cartData[itemId][size]) {
+        //             cartData[itemId][size] += 1
+        //         } else {
+        //             cartData[itemId][size] = 1
+        //         }
+        //     } else {
+        //         cartData[itemId] = {}
+        //         cartData[itemId][size] = 1
+        //     }
+        //     setCartItems(cartData)
+        // }
+        
+        // if (product.colors.length && !color){
+        //     toast.error("Select Product Color")
+        //     return
+        // } else if(product.colors.length && color) {
+            
+
+        //     if(cartData[itemId]) {
+        //         if(cartData[itemId][color]) {
+        //             cartData[itemId][color] += 1
+        //         } else {
+        //             cartData[itemId][color] = 1
+        //         }
+        //     } else {
+        //         cartData[itemId] = {}
+        //         cartData[itemId][color] = 1
+        //     }
+
+        //     setCartItems(cartData)
+        // }
 
         // if(!size) {
         //     toast.error('Select Product Size')
@@ -78,7 +122,7 @@ const ShopContextProvider = (props) => {
         // }
 
         // setCartItems(cartData)
-
+        console.log(cartItems)
         if(token) {
             try {
                 const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size, color}, {headers: {token}})
@@ -151,15 +195,16 @@ const ShopContextProvider = (props) => {
 
     const getProductsData = async () => {
         try {
-            setIsLoading(true)
-            const response = await axios.get(backendUrl + '/api/product/list')
-
-            if(response.data.success) {
-                setProducts(response.data.products)
-                setIsLoading(false)
+            // setIsLoading(true)
+            const response = await axios.post(backendUrl + '/api/product/list', {fetchLimit, offset})
+            if(response.data.products.length > 0) {
+                setProducts(prev => [...prev, ...response.data.products])
+                setOffset(offset => offset + fetchLimit)
+                // setIsLoading(false)
             } else {
                 toast.error(response.data.message)
-                setIsLoading(false)
+                // return
+                // setIsLoading(false)
             }
 
         } catch (error) {
@@ -182,8 +227,9 @@ const ShopContextProvider = (props) => {
 
 
     useEffect(() => {
+        console.log("ERERER")
         getProductsData()
-    }, [])
+    }, [offset])
 
     useEffect(() => {
         if(!token && localStorage.getItem('token')) {
