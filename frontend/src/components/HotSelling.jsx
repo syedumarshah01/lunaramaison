@@ -7,7 +7,7 @@ import Aos from 'aos'
 import 'aos/dist/aos.css'
 
 
-const BestSeller = () => {
+const HotSelling = () => {
   const { products, isLoading } = useContext(ShopContext);
   const [bestSeller, setBestSeller] = useState([]);
   // const [isIntersecting, setIsIntersecting] = useState(false)
@@ -41,9 +41,9 @@ const BestSeller = () => {
   return (
     <div ref={ref} className="my-10" data-aos='fade-right'>
       <div className="text-center text-3xl py-8">
-        <Title text1={"BEST"} text2={"SELLERS"} />
+        <Title text1={"HOT"} text2={"SELLING"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem ipsum is a dummy text displayed for testing purposes.
+        Discover our most-loved and trending pieces— Shop Now
         </p>
       </div>
                                                               {/* scroll-element-best-seller */}
@@ -63,4 +63,4 @@ const BestSeller = () => {
   );
 };
 
-export default BestSeller;
+export default HotSelling;

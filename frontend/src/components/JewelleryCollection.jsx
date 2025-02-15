@@ -6,7 +6,7 @@ import { LoadingOne, LoadingTwo } from "./Loading";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-const LatestCollection = () => {
+const JewelleryCollection = () => {
   const { products, isLoading } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([]);
   // const [isIntersecting, setIsIntersecting] = useState(false)
@@ -43,10 +43,9 @@ const LatestCollection = () => {
     <div ref={ref} className="my-10" data-aos='fade-up'>
       
       <div className="text-center py-8 text-3xl">
-        <Title text1={"LATEST"} text2={"COLLECTION"} />
+        <Title text1={"JEWELLERY"} text2={"COLLECTION"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem Ipsum is simply a dummy text of the printing and typesetting
-          industry.
+        A stunning selection of timeless and trendy jewellery to elevate your style!
         </p>
       </div>
 
@@ -67,4 +66,4 @@ const LatestCollection = () => {
   );
 };
 
-export default LatestCollection;
+export default JewelleryCollection;
