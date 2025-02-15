@@ -66,7 +66,7 @@ const HeroTwo = () => {
         >
           <div
             className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+            style={{ backgroundImage: `url(${slides[currentSlide].image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
           >
             <div className="absolute inset-0 bg-black bg-opacity-40">
               <div className="container mx-auto px-4 h-full flex items-center">
@@ -96,21 +96,21 @@ const HeroTwo = () => {
         </motion.div>
       </AnimatePresence>
 
-      <button
+      {/* <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
         aria-label="Previous slide"
       >
         <FiChevronLeft className="w-6 h-6 text-white" />
-      </button>
+      </button> */}
 
-      <button
+      {/* <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-2 backdrop-blur-sm transition-all duration-300"
         aria-label="Next slide"
       >
         <FiChevronRight className="w-6 h-6 text-white" />
-      </button>
+      </button> */}
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
         {slides.map((_, index) => (

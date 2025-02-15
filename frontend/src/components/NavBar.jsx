@@ -16,7 +16,7 @@ const NavBar = () => {
     setCartItems({})
   }
   return (
-    <div className='relative flex items-center justify-between py-5 font-medium h-40 z-50'>
+    <div className='relative flex items-center justify-between py-5 font-medium h-40 z-50 mb-2 sm:mb-0'>
       <Link to='/'>
       <img src={assets.lunaramaison} alt="" className='w-32 h-32 pt-4 absolute left-[-40px] top-0' />
       </Link>
@@ -78,7 +78,7 @@ const NavBar = () => {
       </div>
 
       {/* Sidebar Menu for Small Screens */}
-      <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full': 'w-0'}`}>
+      <div className={`absolute top-0 right-0 overflow-hidden bg-white transition-all ${visible ? 'w-full': 'w-0'}`}>
         <div className='flex flex-col text-gray-600'>
           <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
             <img className='h-4 rotate-180' src={assets.dropdown_icon} alt="" />
