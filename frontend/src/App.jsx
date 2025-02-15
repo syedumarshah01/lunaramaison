@@ -48,7 +48,7 @@ const App = () => {
       <ToastContainer />
       <>
         <ScrollToTop />
-        <NavBar />
+        <NavBar/>
         <SearchBar />
 
         <Routes>
