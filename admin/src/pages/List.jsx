@@ -4,14 +4,17 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 const List = ({token}) => {
 
+  const fetchLimit = 2
+  const [offset, setOffset] = useState(0)
   const [list, setList] = useState([])
 
   const fetchList = async () => {
     try {
-      const response = await axios.get(backendUrl + '/api/product/list')
+      const response = await axios.post(backendUrl + '/api/product/list', {fetchLimit, offset})
       
-      if(response.data.success) {
-        setList(response.data.products)
+      if(response.data.products.length > 0) {
+        setList(prev => [...prev, ...response.data.products])
+        setOffset(offset => offset + fetchLimit)
       } else {
         toast.error(response.data.message)
       }
@@ -29,7 +32,15 @@ const List = ({token}) => {
 
       if(response.data.success) {
         toast.success(response.data.message)
-        await fetchList()
+
+        // const response = await axios.post(backendUrl + '/api/product/list')
+        // console.log(response)
+        // if(response.data.products) {
+        //   setList(response.data.products)
+        // } else {
+        //   console.log("Else block")
+        // }
+        // await fetchList()
       } else {
         toast.error(response.data.message)
       }
@@ -41,7 +52,7 @@ const List = ({token}) => {
 
   useEffect(() => {
     fetchList()
-  }, [])
+  }, [offset])
 
   return (
     <>
