@@ -13,6 +13,7 @@ const Add = ({token}) => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
+  const [features, setFeatures] = useState('')
   const [price, setPrice] = useState('')
   const [category, setCategory] = useState('Necklaces')
   const [subCategory, setSubCategory] = useState('Silver')
@@ -29,6 +30,7 @@ const Add = ({token}) => {
 
       formData.append("name", name)
       formData.append("description", description)
+      formData.append("features", features)
       formData.append("price", price)
       formData.append("category", category)
       formData.append("subCategory", subCategory)
@@ -47,6 +49,7 @@ const Add = ({token}) => {
         toast.success(response.data.message)
         setName('')
         setDescription('')
+        setFeatures('')
         setImage1(false)
         setImage2(false)
         setImage3(false)
@@ -99,7 +102,12 @@ const Add = ({token}) => {
 
       <div className='w-full'>
         <p className='mb-2'>Product Description</p>
-        <textarea onChange={(e) => setDescription(e.target.value)} value={description} className='w-full max-w-[500px] px-3 py-2' type="text" placeholder='Write content here' required/>
+        <textarea onChange={(e) => setDescription(e.target.value)} value={description} className='w-full max-w-[500px] px-3 py-2' type="text" placeholder='Write product description...' required/>
+      </div>
+
+      <div className='w-full'>
+        <p className='mb-2'>Product Features</p>
+        <textarea onChange={(e) => setFeatures(e.target.value)} value={features} className='w-full max-w-[500px] px-3 py-2' type="text" placeholder='Write product features/specifications...' required/>
       </div>
 
       <div className='flex flex-col sm:flex-row gap-2 w-full sm:gap-8'>
