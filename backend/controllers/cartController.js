@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js"
 
 const addToCart = async (req, res) => {
     try {
-        const { userId, itemId, size, color } = req.body
+        const { userId, itemId, size, color, quantity } = req.body
         const userData = await userModel.findById(userId)
         let cartData = await userData.cartData
         
@@ -13,35 +13,35 @@ const addToCart = async (req, res) => {
             const sizeAndColor = `${size} ${color}`
             if(cartData[itemId]) {
                 if(cartData[itemId][sizeAndColor]) {
-                    cartData[itemId][sizeAndColor] += 1
+                    cartData[itemId][sizeAndColor] += quantity
                 } else {
-                    cartData[itemId][sizeAndColor] = 1
+                    cartData[itemId][sizeAndColor] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][sizeAndColor] = 1
+                cartData[itemId][sizeAndColor] = quantity
             }
         } else if(size) {
             if(cartData[itemId]) {
                 if(cartData[itemId][size]) {
-                    cartData[itemId][size] += 1
+                    cartData[itemId][size] += quantity
                 } else {
-                    cartData[itemId][size] = 1
+                    cartData[itemId][size] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][size] = 1
+                cartData[itemId][size] = quantity
             }
         } else if(color) {
             if(cartData[itemId]) {
                 if(cartData[itemId][color]) {
-                    cartData[itemId][color] += 1
+                    cartData[itemId][color] += quantity
                 } else {
-                    cartData[itemId][color] = 1
+                    cartData[itemId][color] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][color] = 1
+                cartData[itemId][color] = quantity
             }
         }
         // if(size) {
