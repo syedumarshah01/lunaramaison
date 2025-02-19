@@ -6,7 +6,7 @@ import { NavLink, Link } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
 const NavBarTwo = () => {
-  const { token, setToken, setCartItems, navigate } = useContext(ShopContext);
+  const { token, setToken, setCartItems, setShowSearch, navigate } = useContext(ShopContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const logout = () => {
@@ -19,7 +19,7 @@ const NavBarTwo = () => {
 
 
   return (
-    <div className="relative bg-cream-50">
+    <div className="relative bg-cream-50 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
       <nav className="top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -56,7 +56,7 @@ const NavBarTwo = () => {
                 </motion.a>
               </NavLink>
 
-              <div className="mx-auto font-bold scale-150">
+              <div className="mx-auto font-bold md:scale-125 lg:scale-150">
                 <h1>Lunara Maison</h1>
               </div>
 
@@ -90,7 +90,7 @@ const NavBarTwo = () => {
                 className="p-2 rounded-full hover:bg-gray-100"
                 onClick={() => (token ? null : navigate("/login"))}
               >
-                <FiSearch className="h-6 w-6 text-gray-700" />
+                <FiSearch onClick={() => setShowSearch(true)} className="h-6 w-6 text-gray-700" />
               </motion.button>
 
               <Link to="/cart">
