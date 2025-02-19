@@ -16,14 +16,14 @@ const NavBar = () => {
     setCartItems({})
   }
   return (
-    <div className='relative flex items-center justify-between py-5 font-medium h-40 z-50 mb-2 sm:mb-0'>
+    <div className='relative flex items-center justify-between py-0 sm:py-5 font-medium h-40 z-50'>
       <Link to='/'>
-      <img src={assets.lunaramaison} alt="" className='w-32 h-32 pt-4 absolute left-[-40px] top-0' />
+      <img src={assets.lunaramaison} alt="" className='w-32 h-32 pt-4 absolute -left-8 top-0' />
       </Link>
      
       {/* <h1>LUNARA MAISON</h1> */}
 
-      <ul className='hidden sm:flex gap-5 text-sm text-gray-700 bg-gradient-to-r from-neutral-50 rounded-tl-lg px-2 lg:px-20 pt-4 pb-2'>
+      <ul className='hidden sm:flex gap-5 text-sm  bg-gradient-to-r from-neutral-50 rounded-tl-lg px-2 lg:px-20 pt-4 pb-2'>
 
         <NavLink to='/' className='flex flex-col items-center gap-1'>
           <p className='hover:scale-125'>HOME</p>

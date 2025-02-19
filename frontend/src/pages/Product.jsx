@@ -6,12 +6,19 @@ import RelatedProducts from '../components/RelatedProducts'
 
 const Product = () => {
   const { productId } = useParams()
-  const {products, currency, addToCart} = useContext(ShopContext)
+  const {products, currency, addToCart, discount, navigate} = useContext(ShopContext)
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
   const [color, setColor] = useState('')
+  const [quantity, setQuantity] = useState(1)
   const [productDetailsFlag, setProductDetailsFlag] = useState('description')
+
+  const onClickBuyHandler = () => {
+    addToCart(productData._id, size, color, Number(quantity))
+    navigate('/cart')
+  }
+  
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -64,8 +71,7 @@ const Product = () => {
             <p className='pl-2 text-gray-500'>Sold: 23</p>
           </div>
           <p className="mt-5 text-3xl font-medium">
-            {currency}
-            {productData.price}
+            {currency} {productData.price - (productData.price * (discount / 100))}
           </p>
           {/* <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
@@ -132,13 +138,26 @@ const Product = () => {
           </div>
         </div>}
           
+          <div>
+            <label htmlFor="quantity">Quantity: </label>
+            <input required onChange={(e) => setQuantity(e.target.value)} name='quantity' value={quantity} className='border border-gray-300 rounded py-1.5 px-3.5 w-[15%] mb-3'  type="number" />
+
+          </div>
           
-          <button
-            onClick={() => addToCart(productData._id, size, color)}
-            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
-          >
-            ADD TO CART
-          </button>
+          <div className='w-[60%] flex gap-4 text-nowrap'>
+            <button
+              onClick={() => addToCart(productData._id, size, color, Number(quantity))}
+              className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+            >
+              ADD TO CART
+            </button>
+
+            <button  onClick={onClickBuyHandler}
+              className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
+              BUY NOW
+            </button>
+          </div>
+
           <hr className="mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% Original product.</p>

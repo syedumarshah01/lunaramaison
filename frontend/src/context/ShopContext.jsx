@@ -9,7 +9,8 @@ const ShopContextProvider = (props) => {
     
     const fetchLimit = 2
     const currency = 'PKR'
-    const delivery_fee = 10
+    const discount = 20
+    const delivery_fee = 0
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [offset, setOffset] = useState(0)
     const [search, setSearch] = useState('')
@@ -17,10 +18,9 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
     const [products, setProducts] = useState([])
     const [token, setToken] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
-    const addToCart = async (itemId, size, color) => {
+    const addToCart = async (itemId, size, color, quantity) => {
         let cartData = structuredClone(cartItems)
         const sizeAndColor = `${size} ${color}`
         let product = products.filter((item) => item._id === itemId)[0]
@@ -28,37 +28,37 @@ const ShopContextProvider = (props) => {
         if((product.sizes.length && product.colors.length) && (size && color)) {
             if(cartData[itemId]) {
                 if(cartData[itemId][sizeAndColor]) {
-                    cartData[itemId][sizeAndColor] += 1
+                    cartData[itemId][sizeAndColor] += quantity
                 } else {
-                    cartData[itemId][sizeAndColor] = 1
+                    cartData[itemId][sizeAndColor] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][sizeAndColor] = 1
+                cartData[itemId][sizeAndColor] = quantity
             }
             setCartItems(cartData)
         } else if((product.sizes.length && !product.colors.length) && size) {
             if(cartData[itemId]) {
                 if(cartData[itemId][size]) {
-                    cartData[itemId][size] += 1
+                    cartData[itemId][size] += quantity
                 } else {
-                    cartData[itemId][size] = 1
+                    cartData[itemId][size] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][size] = 1
+                cartData[itemId][size] = quantity
             }
             setCartItems(cartData)
         } else if((product.colors.length && !product.sizes.length) && color) {
             if(cartData[itemId]) {
                 if(cartData[itemId][color]) {
-                    cartData[itemId][color] += 1
+                    cartData[itemId][color] += quantity
                 } else {
-                    cartData[itemId][color] = 1
+                    cartData[itemId][color] = quantity
                 }
             } else {
                 cartData[itemId] = {}
-                cartData[itemId][color] = 1
+                cartData[itemId][color] = quantity
             }
             setCartItems(cartData)
         } else {
@@ -66,66 +66,9 @@ const ShopContextProvider = (props) => {
             return
         }
 
-
-        // if(product.sizes.length && !size) {
-        //     toast.error("Select Product Size")
-        //     return
-        // } else if(product.sizes.length && size) {
-        //     if(cartData[itemId]) {
-        //         if(cartData[itemId][size]) {
-        //             cartData[itemId][size] += 1
-        //         } else {
-        //             cartData[itemId][size] = 1
-        //         }
-        //     } else {
-        //         cartData[itemId] = {}
-        //         cartData[itemId][size] = 1
-        //     }
-        //     setCartItems(cartData)
-        // }
-        
-        // if (product.colors.length && !color){
-        //     toast.error("Select Product Color")
-        //     return
-        // } else if(product.colors.length && color) {
-            
-
-        //     if(cartData[itemId]) {
-        //         if(cartData[itemId][color]) {
-        //             cartData[itemId][color] += 1
-        //         } else {
-        //             cartData[itemId][color] = 1
-        //         }
-        //     } else {
-        //         cartData[itemId] = {}
-        //         cartData[itemId][color] = 1
-        //     }
-
-        //     setCartItems(cartData)
-        // }
-
-        // if(!size) {
-        //     toast.error('Select Product Size')
-        //     return
-        // }        
-        // let cartData = structuredClone(cartItems)
-
-        // if(cartData[itemId]) {
-        //     if(cartData[itemId][size]) {
-        //         cartData[itemId][size] += 1
-        //     } else {
-        //         cartData[itemId][size] = 1
-        //     }
-        // } else {
-        //     cartData[itemId] = {}
-        //     cartData[itemId][size] = 1
-        // }
-
-        // setCartItems(cartData)
-        console.log(cartItems)
         if(token) {
             try {
-                const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size, color}, {headers: {token}})
+                const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size, color, quantity}, {headers: {token}})
                 if(response.data.success) {
                     toast.success(response.data.message)
                 }
@@ -227,7 +170,6 @@ const ShopContextProvider = (props) => {
 
 
     useEffect(() => {
-        console.log("ERERER")
         getProductsData()
     }, [offset])
 
@@ -241,13 +183,14 @@ const ShopContextProvider = (props) => {
     const value = {
         products,
         currency,
+        discount,
         delivery_fee,
         search, setSearch,
         showSearch, setShowSearch, setCartItems,
         cartItems, addToCart, getCartCount, updateQuantity,
         getCartAmount,
         navigate, backendUrl,
-        setToken, token, isLoading
+        setToken, token
     }
 
     return (

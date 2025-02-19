@@ -8,7 +8,7 @@ import 'aos/dist/aos.css'
 
 const JewelleryCollection = () => {
   const { products, isLoading } = useContext(ShopContext);
-  const [latestProducts, setLatestProducts] = useState([]);
+  const [latestProducts, setLatestProducts] = useState([])
   // const [isIntersecting, setIsIntersecting] = useState(false)
   const ref = useRef()
 

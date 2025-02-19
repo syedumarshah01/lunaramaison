@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import NavBar from "./NavBar";
 
 const slides = [
   {
     id: 1,
-    image: "https://media.istockphoto.com/id/880908134/fi/valokuva/wedding-crown-kukkataustalla.jpg?s=1024x1024&w=is&k=20&c=xvdFyNCqf_h-QIAIw6ZH_N0Ls_ut0Dr-NX98dZL3Q4E=",
+    image: "https://img.freepik.com/free-photo/ripple-ornament-forever-drop-costume_1232-3547.jpg?t=st=1739686818~exp=1739690418~hmac=f43a0cdbb0c3d17a679e4b2edc5e0a99420bdebe88f25312654c06dda4fbac2f&w=740",
     title: "Adorn Yourself with Timeless Elegance",
     subtitle: "Discover our exclusive collection of handcrafted jewelry",
     cta: "Shop Jewellery Collection"
@@ -55,6 +54,7 @@ const HeroTwo = () => {
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -71,9 +71,10 @@ const HeroTwo = () => {
             <div className="absolute inset-0 bg-black bg-opacity-40">
               <div className="container mx-auto px-4 h-full flex items-center">
                 <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 2}}
+      
                   className="max-w-3xl text-white"
                 >
                   <h1 className="text-5xl md:text-6xl font-serif mb-4">
