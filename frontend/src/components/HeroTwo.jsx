@@ -35,7 +35,7 @@ const HeroTwo = () => {
       }, []);
     
   return (
-        <div className="relative h-screen overflow-hidden -mx-4 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
+        <div className="relative h-[calc(100vh-4rem)] overflow-hidden -mx-4 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
