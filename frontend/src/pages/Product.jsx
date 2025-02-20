@@ -15,8 +15,8 @@ const Product = () => {
   const [productDetailsFlag, setProductDetailsFlag] = useState('description')
 
   const onClickBuyHandler = () => {
-    addToCart(productData._id, size, color, Number(quantity))
-    navigate('/cart')
+    const isAdded = addToCart(productData._id, size, color, Number(quantity))
+    if(isAdded) navigate('/cart') 
   }
   
 
@@ -67,8 +67,8 @@ const Product = () => {
             <img src={assets.star_icon} alt="" className="w-3 5" />
             <img src={assets.star_icon} alt="" className="w-3 5" />
             <p className="pl-2 text-gray-500">(122)</p>
-            <p className='pl-2 text-gray-500'>|</p>
-            <p className='pl-2 text-gray-500'>Sold: 23</p>
+            {/* <p className='pl-2 text-gray-500'>|</p> */}
+            {/* <p className='pl-2 text-gray-500'>Sold: 1.4K</p> */}
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency} {productData.price - (productData.price * (discount / 100))}

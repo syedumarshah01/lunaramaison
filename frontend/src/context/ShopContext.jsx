@@ -62,8 +62,8 @@ const ShopContextProvider = (props) => {
             }
             setCartItems(cartData)
         } else {
-            toast.error("Missing Data")
-            return
+            toast.error("Select Color/Size")
+            return false
         }
 
         if(token) {
@@ -71,6 +71,7 @@ const ShopContextProvider = (props) => {
                 const response = await axios.post(backendUrl + '/api/cart/add', {itemId, size, color, quantity}, {headers: {token}})
                 if(response.data.success) {
                     toast.success(response.data.message)
+                    return true
                 }
             } catch (error) {
                 console.log(error)
