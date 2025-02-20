@@ -19,7 +19,7 @@ const NavBarTwo = () => {
 
 
   return (
-    <div className="relative bg-cream-50 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
+    <div className="relative bg-cream-50 -mx-4 sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
       <nav className="top-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
