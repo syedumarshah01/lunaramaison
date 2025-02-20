@@ -8,23 +8,23 @@ const HeroTwo = () => {
 
     const slides = [
         {
-          image: assets.about_img,
+          image: assets.hero_section_one,
           title: "Elegance Redefined",
           subtitle: "Discover our exclusive collection of artisanal jewelry",
           cta: "Shop Jewellery Collection",
         },
         {
-          image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2",
+          image: assets.hero_section_two,
           title: "Crafted Tradition",
           subtitle: "Experience the comfort of authentic Peshawari Chappals",
           cta: "Explore Footwear",
         },
-        {
-          image: "https://images.unsplash.com/photo-1602751584514-9e2b8a8c7c60",
-          title: "Cultural Elegance",
-          subtitle: "Blend of traditional craftsmanship with modern style",
-          cta: "New Arrivals",
-        },
+        // {
+        //   image: "https://images.unsplash.com/photo-1602751584514-9e2b8a8c7c60",
+        //   title: "Cultural Elegance",
+        //   subtitle: "Blend of traditional craftsmanship with modern style",
+        //   cta: "New Arrivals",
+        // },
       ];
     
       useEffect(() => {
@@ -35,7 +35,7 @@ const HeroTwo = () => {
       }, []);
     
   return (
-        <div className="relative h-screen overflow-hidden sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
+        <div className="relative h-[calc(100vh-4rem)] overflow-hidden sm:-mx-[5vw] md:-mx-[7vw] lg:-mx-[9vw]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
