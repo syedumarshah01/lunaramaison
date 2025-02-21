@@ -22,11 +22,6 @@ const Collection = () => {
       "@type": "CollectionPage",
       "name": "Collection - Lunara Maison",
       "description": "Explore our exclusive collection of artificial jewellery and authentic Peshawari chappals. Shop now for stylish and affordable accessories and footwear.",
-      "url": "https://www.lunaramaison.com/collection",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.lunaramaison.com/collection"
-      },
       "brand": {
         "@type": "Brand",
         "name": "Lunara Maison"
@@ -115,17 +110,15 @@ const Collection = () => {
 
         {/* Open Graph / Facebook */}
       <meta property="og:type" content="website"/>
-      <meta property="og:url" content="https://www.lunaramaison.com/collection"/>
       <meta property="og:title" content="Collection - Lunara Maison"/>
       <meta property="og:description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
       <meta property="og:site_name" content="Lunara Maison"/>
 
       {/* Twitter */}
-      <meta property="twitter:url" content="https://www.lunaramaison.com/collection"/>
       <meta property="twitter:title" content="Collection - Lunara Maison"/>
       <meta property="twitter:description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
 
-      <link rel="canonical" href="https://www.lunaramaison.com/collection"/>
+      <link rel="canonical" href="https://www.lunaramaison.com/"/>
 
       <script type="application/ld+json">
         {getCollectionSchemaJson()}
