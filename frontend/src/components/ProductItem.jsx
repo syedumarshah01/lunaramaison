@@ -26,6 +26,7 @@ const ProductItem = ({ id, image, name, price }) => {
             style: { transitionDelay: "1s" },
           }}
           placeholderSrc={image}
+          alt={`${name} artificial jewellery`}
         />
 
         <span className="absolute top-2 right-2 w-[40%] h-auto text-center  rounded-lg bg-red-600 text-nowrap text-sm text-white">{`${discount}% OFF`}</span>

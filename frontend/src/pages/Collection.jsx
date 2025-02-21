@@ -3,6 +3,7 @@ import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
 import Title from '../components/Title'
 import ProductItem from '../components/ProductItem'
+import { Helmet } from 'react-helmet-async'
 
 const Collection = () => {
 
@@ -12,6 +13,34 @@ const Collection = () => {
   const [category, setCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
   const [sortType, setSortType] = useState('relevant')
+
+
+  const getCollectionSchemaJson = () => {
+    const schema = 
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Collection - Lunara Maison",
+      "description": "Explore our exclusive collection of artificial jewellery and authentic Peshawari chappals. Shop now for stylish and affordable accessories and footwear.",
+      "url": "https://www.lunaramaison.com/collection",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.lunaramaison.com/collection"
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "Lunara Maison"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": 'PKR',
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+  }
+  return JSON.stringify(schema);
+}
+
 
   const toggleCategory = (e) => {
     if(category.includes(e.target.value)) {
@@ -77,11 +106,37 @@ const Collection = () => {
 
 
   return (
+    <>
+    <Helmet>
+        {/* Primary Meta Tags */}
+      <title>Collection - Lunara Maison</title>
+      <meta name="description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
+      <meta name="keywords" content="artificial jewellery, jewellery, ring, necklace, bracelet, women, men, Peshawari chappals, fashion accessories, affordable jewellery, handmade chappals, stylish footwear"/>
+
+        {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website"/>
+      <meta property="og:url" content="https://www.lunaramaison.com/collection"/>
+      <meta property="og:title" content="Collection - Lunara Maison"/>
+      <meta property="og:description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
+      <meta property="og:site_name" content="Lunara Maison"/>
+
+      {/* Twitter */}
+      <meta property="twitter:url" content="https://www.lunaramaison.com/collection"/>
+      <meta property="twitter:title" content="Collection - Lunara Maison"/>
+      <meta property="twitter:description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
+
+      <link rel="canonical" href="https://www.lunaramaison.com/collection"/>
+
+      <script type="application/ld+json">
+        {getCollectionSchemaJson()}
+      </script>
+    </Helmet>
+
     <div className='flex flex-col sm:flex-row gap-10 pt-10 border-t'>
       {/* Filter Options */}
       <div className='min-w-60'>
         <p onClick={() => setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS
-          <img className={`h-3 sm:hidden ${showFilter? 'rotate-90': ''}`} src={assets.dropdown_icon} alt="" />
+          <img className={`h-3 sm:hidden ${showFilter? 'rotate-90': ''}`} src={assets.dropdown_icon} alt="dropdown" />
         </p>
         
         {/* Category Filter */}
@@ -146,7 +201,7 @@ const Collection = () => {
 
       </div>
     </div>
-  )
+    </>)
 }
 
 export default Collection

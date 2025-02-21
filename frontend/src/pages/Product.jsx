@@ -66,9 +66,13 @@ const Product = () => {
       <Helmet>
         <title>{productData.name} - Lunara Maison</title>
         <meta name="description" content={`Buy ${productData.name} at Lunara Maison. Affordable artificial jewellery and Peshawari chappals.`} />
-        <meta name="keywords" content={`artificial jewellery, peshawari chappal, ${productData.name}, Lunara Maison`} />
+        <meta name="keywords" content={`beautiful, earrings, necklace, bracelet, ring, women, artificial jewellery, jewellery, peshawari chappal, ${productData.name}, Lunara Maison`} />
         <meta property="og:title" content={productData.name} />
         <meta property="og:image" content={productData.image[0]} />
+
+        <meta property="twitter:title" content={productData.name}/>
+        <meta property="twitter:image" content={productData.image[0]} />
+        
 
         <script type="application/ld+json">
           {getProductSchemaJson()}
@@ -87,13 +91,13 @@ const Product = () => {
                   onClick={() => setImage(item)}
                   src={item}
                   key={index}
-                  className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-poiter"
+                  className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
                   alt={`${productData.name} artificial jewellery`}
                 />
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img className="w-full h-auto" src={image} alt="" />
+              <img className="w-full h-auto" src={image} alt={`${productData.name} aritificial jewellery`} />
             </div>
           </div>
 
