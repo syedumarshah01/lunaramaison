@@ -103,6 +103,14 @@ const Collection = () => {
   return (
     <>
     <Helmet>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G2ZYPPZX7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1G2ZYPPZX7');
+</script>
         {/* Primary Meta Tags */}
       <title>Collection - Lunara Maison</title>
       <meta name="description" content="Shop the latest collection of artificial jewellery and authentic Peshawari chappals. Stylish, affordable, and perfect for every occasion. Explore now!"/>
