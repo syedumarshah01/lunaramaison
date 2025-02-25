@@ -103,14 +103,13 @@ const Collection = () => {
   return (
     <>
     <Helmet>
-      <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQDHNK63XD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js', new Date())
 
-  gtag('config', 'G-LQDHNK63XD');
+  gtag('config', 'G-LQDHNK63XD')
 </script>
         {/* Primary Meta Tags */}
       <title>Collection - Lunara Maison</title>
