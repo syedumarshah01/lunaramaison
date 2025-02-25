@@ -106,6 +106,7 @@ const Collection = () => {
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQDHNK63XD"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
+console.log(window.dataLayer)
   function gtag(){window.dataLayer.push(arguments)}
   gtag('js', new Date())
 
