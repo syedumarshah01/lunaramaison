@@ -43,8 +43,8 @@ const Product = () => {
 
 
 
-  const onClickBuyHandler = () => {
-    const isAdded = addToCart(productData._id, size, color, Number(quantity));
+  const onClickBuyHandler = async () => {
+    const isAdded = await addToCart(productData._id, size, color, Number(quantity));
     if (isAdded) navigate("/cart");
   };
 
@@ -92,12 +92,12 @@ const Product = () => {
                   src={item}
                   key={index}
                   className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
-                  alt={`${productData.name} artificial jewellery`}
+                  alt={`${productData.name} artificial jewellery`} loading="lazy"
                 />
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img className="w-full h-auto" src={image} alt={`${productData.name} aritificial jewellery`} />
+              <img className="w-full h-auto" src={image} alt={`${productData.name} aritificial jewellery`} loading="eager"/>
             </div>
           </div>
 
