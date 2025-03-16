@@ -64,7 +64,7 @@ const Product = () => {
   return productData ? (
     <>
       <Helmet>
-        <link rel="canonical" href=`https://lunaramaison.com/${productData._id}`/>
+        <link rel="canonical" href={`https://lunaramaison.com/${productData._id}`}/>
         <title>{productData.name}</title>
         <meta name="description" content={`Buy ${productData.name} at Lunara Maison. Affordable artificial jewellery and Peshawari chappals.`} />
         <meta name="keywords" content={`beautiful, earrings, necklace, bracelet, ring, women, artificial jewellery, jewellery, peshawari chappal, ${productData.name}, Lunara Maison`} />
