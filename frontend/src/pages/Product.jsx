@@ -64,7 +64,7 @@ const Product = () => {
   return productData ? (
     <>
       <Helmet>
-        <title>{productData.name} - Lunara Maison</title>
+        <title>{productData.name}</title>
         <meta name="description" content={`Buy ${productData.name} at Lunara Maison. Affordable artificial jewellery and Peshawari chappals.`} />
         <meta name="keywords" content={`beautiful, earrings, necklace, bracelet, ring, women, artificial jewellery, jewellery, peshawari chappal, ${productData.name}, Lunara Maison`} />
         <meta property="og:title" content={productData.name} />

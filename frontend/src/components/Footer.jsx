@@ -9,16 +9,16 @@ const Footer = () => {
         <div>
             <img className='mb w-32 relative bottom-2 left-[-25px]' src={assets.lunaramaison} alt=""/>
             <p className='w-full md:w-2/3 text-gray-600'>
-            Where Style Meets Tradition.            </p>
+            Where Style Meets Tradition.</p>
         </div>
 
         <div>
             <p className='text-xl font-medium mb-5'>COMPANY</p>
             <ul className='flex flex-col gap-1 text-gray-600'>
                 <li><Link to='/'>Home</Link></li>
+                <li><Link to='/collection'>Collection</Link></li>
                 <li><Link to='/about'>About</Link></li>
-                <li>Delivery</li>
-                <li>Privacy Policy</li>
+                <li><Link to='/contact'>Contact</Link></li>
 
             </ul>
         </div>
@@ -27,8 +27,7 @@ const Footer = () => {
             <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
             <ul className='flex flex-col gap-1 text-gray-600'>
                 <li>+1-234-567-8</li>
-                <li>contact@lunaramaison.com</li>
-
+                <li>lunaramaison@gmail.com</li>
             </ul>
         </div>
       </div>

@@ -16,8 +16,9 @@ import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
 import about_img from './about_img.png'
 import contact_img from './contact_img.png'
-import hero_section_one from './hero_section_one.jpg'
-import hero_section_two from './hero_section_two.jpg'
+import hero_section_one from './hero_section_one.webp'
+import hero_section_two from './hero_section_two.webp'
+import hero_section_three from './hero_section_three.png'
 
 
 export const assets = {
@@ -40,7 +41,8 @@ export const assets = {
     about_img,
     contact_img,
     hero_section_one,
-    hero_section_two
+    hero_section_two,
+    hero_section_three
 }
 
 

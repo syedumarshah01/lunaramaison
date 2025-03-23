@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Title from "./Title";
 import { ShopContext } from "../context/ShopContext";
 import ProductItem from "./ProductItem";
@@ -10,23 +10,6 @@ import 'aos/dist/aos.css'
 const HotSelling = () => {
   const { products, isLoading } = useContext(ShopContext);
   const [bestSeller, setBestSeller] = useState([]);
-  // const [isIntersecting, setIsIntersecting] = useState(false)
-  const ref = useRef()
-
-  // useEffect(() => {
-  //     const observer = new IntersectionObserver((entries, observer) => {
-  //       const entry = entries[0]
-  //       if(entry.isIntersecting) {
-  //         entry.target.classList.add('visible')
-  //         setIsIntersecting(true)
-  //       } else {
-  //         entry.target.classList.remove('visible')
-  //         setIsIntersecting(false)
-  //       }
-  //     }, {threshold: 0.2})
-  //     observer.observe(ref.current)
-  //   }, [isIntersecting])
-
 
     useEffect(() => {
       Aos.init({duration: 2000
@@ -39,7 +22,7 @@ const HotSelling = () => {
   }, [products]);
 
   return (
-    <div ref={ref} className="my-10" data-aos='fade-right'>
+    <div className="my-10" data-aos='fade-right'>
       <div className="text-center text-3xl py-8">
         <Title text1={"HOT"} text2={"SELLING"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
@@ -47,7 +30,7 @@ const HotSelling = () => {
         </p>
       </div>
                                                               {/* scroll-element-best-seller */}
-      {isLoading ? <LoadingOne/> : <div ref={ref} className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+      {isLoading ? <LoadingOne/> : <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
         {bestSeller.map((item, index) => (
           <ProductItem
             key={index}

@@ -9,9 +9,6 @@ import 'aos/dist/aos.css'
 const JewelleryCollection = () => {
   const { products, isLoading } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([])
-  // const [isIntersecting, setIsIntersecting] = useState(false)
-  const ref = useRef()
-
   
 
   useEffect(() => {
@@ -20,28 +17,14 @@ const JewelleryCollection = () => {
     })
   }, [])
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries, observer) => {
-  //     const entry = entries[0]
-  //     if(entry.isIntersecting) {
-  //       entry.target.classList.add('visible')
-  //       setIsIntersecting(true)
-  //     } else {
-  //       setIsIntersecting(false)
-  //     }
-  //   }, {threshold: 0.2})
-  //    observer.observe(ref.current)
-  // }, [isIntersecting])
-
 
   useEffect(() => {
     setLatestProducts(products.slice(0, 10));
   }, [products]);
 
-  // console.log(products)
-  return (
+ return (
     
-    <div ref={ref} className="my-10" data-aos='fade-up'>
+    <div className="my-10 jewelleryCollection" data-aos='fade-up'>
       
       <div className="text-center py-8 text-3xl">
         <Title text1={"JEWELLERY"} text2={"COLLECTION"} />
@@ -52,7 +35,7 @@ const JewelleryCollection = () => {
 
       {isLoading ? <LoadingOne/> : 
       // Rendering Products
-      <div ref={ref} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
       {products.map((item) => (
         <ProductItem
           key={item._id}

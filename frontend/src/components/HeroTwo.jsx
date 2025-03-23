@@ -6,9 +6,19 @@ import { assets } from '../assets/assets';
 const HeroTwo = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    const handleScroll = (e) => {
+      if(e.target.textContent.includes("Jewellery")) {
+        const jewelleryCollection = document.getElementsByClassName('jewelleryCollection')[0]
+        jewelleryCollection.scrollIntoView({behavior: 'smooth'})
+      } else {
+        const peshawariChappalCollection = document.getElementsByClassName('peshawariChappalCollection')[0]
+        peshawariChappalCollection.scrollIntoView({behavior: 'smooth'})
+      }      
+    }
+    
     const slides = [
         {
-          image: assets.hero_section_one,
+          image: assets.hero_section_three,
           title: "Elegance Redefined",
           subtitle: "Discover our exclusive collection of artisanal jewelry",
           cta: "Shop Jewellery Collection",
@@ -42,14 +52,14 @@ const HeroTwo = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
             className="absolute inset-0"
           >
             <div
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-right-bottom bg-cover sm:bg-center"
               style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
             >
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-none" />
             </div>
             <div className="relative h-full flex items-center justify-center text-center px-4">
               <div className="max-w-3xl">
@@ -70,12 +80,13 @@ const HeroTwo = () => {
                   {slides[currentSlide].subtitle}
                 </motion.p>
                 <motion.button
+                  onClick={handleScroll}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gold-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gold-700 transition-colors"
+                  className="bg-gold-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gold-700 transition-colors bg-black/35"
                 >
                   {slides[currentSlide].cta}
                 </motion.button>
