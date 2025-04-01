@@ -28,22 +28,6 @@ function ScrollToTop() {
 }
 
 const App = () => {
-  // useEffect(() => {
-  //   const onPageLoad = () => {
-  //   const latestCollection = document.querySelector('.scroll-element-latest-collection')
-  //   const bestSellers = document.querySelector('.scroll-element-best-seller')
-  //   observer.observe(latestCollection)
-  //   observer.observe(bestSellers)
-  //   }
-
-  //   if(document.readyState === 'complete') {
-  //     onPageLoad()
-  //   } else {
-  //     window.addEventListener('load', onPageLoad, false)
-  //     return () => window.removeEventListener('load', onPageLoad)
-  //   }
-  // }, [])
-
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <ToastContainer />
