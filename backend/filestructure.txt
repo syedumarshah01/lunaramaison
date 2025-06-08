@@ -1,0 +1,26 @@
+|-- .env
+|-- config
+    |-- cloudinary.js
+    |-- mongodb.js
+|-- controllers
+    |-- cartController.js
+    |-- orderController.js
+    |-- productController.js
+    |-- userController.js
+|-- middleware
+    |-- adminAuth.js
+    |-- auth.js
+    |-- multer.js
+|-- models
+    |-- orderModel.js
+    |-- productModel.js
+    |-- userModel.js
+|-- package-lock.json
+|-- package.json
+|-- routes
+    |-- cartRoute.js
+    |-- orderRoute.js
+    |-- productRoute.js
+    |-- sitemapRoute.js
+    |-- userRoute.js
+|-- server.js
