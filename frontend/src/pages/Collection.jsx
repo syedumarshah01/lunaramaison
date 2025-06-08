@@ -150,7 +150,7 @@ const Collection = () => {
         </div>
 
         <div className="relative w-full rounded-lg shadow-md">
-          <img src="../../public/banner.png" alt="" />
+          <img src="./banner.png" alt="" />
       </div>
       </div>
 {/* <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGprDrigoo&#x2F;l9zlAQer_HBLMvBA9FBjJw&#x2F;view?utm_content=DAGprDrigoo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Clothing Rack Boutique Fashion Banner Landscape</a> */}
