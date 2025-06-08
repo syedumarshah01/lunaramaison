@@ -92,13 +92,13 @@ const Product = () => {
                   onClick={() => setImage(item)}
                   src={item}
                   key={index}
-                  className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
+                  className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer rounded-md"
                   alt={`${productData.name} artificial jewellery`} loading="lazy"
                 />
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img className="w-full h-auto" src={image} alt={`${productData.name} aritificial jewellery`} loading="eager"/>
+              <img className="w-full h-auto rounded-md" src={image} alt={`${productData.name} aritificial jewellery`} loading="eager"/>
             </div>
           </div>
 

@@ -17,7 +17,7 @@ const ProductItem = ({ id, image, name, price }) => {
       <div className="relative overflow-hidden basis-3/4">
         {/* <img className='hover:scale-110 transition ease-in-out h-full w-full' src={image[0]} alt=""/> */}
         <LazyLoadImage
-          className="w-full h-48 hover:scale-110 transition ease-in-out rounded-t"
+          className="w-full h-48 hover:scale-110 transition ease-in-out rounded-md"
           src={image}
           // placeholder={<LoadingTwo/>}
           effect="blur"
@@ -29,7 +29,7 @@ const ProductItem = ({ id, image, name, price }) => {
           alt={`${name} artificial jewellery`}
         />
 
-        <span className="absolute top-2 right-2 w-[40%] h-auto text-center  rounded-lg bg-red-600 text-nowrap text-sm text-white">{`${discount}% OFF`}</span>
+        <span className="montserrat-bold absolute top-2 right-2 w-[40%] h-auto text-center  rounded-lg bg-gradient-to-tr from-blue-400 to-pink-400 text-nowrap text-sm text-slate-100 py-1/2">{`${discount}% OFF`}</span>
       </div>
 
       <div className="pl-2 pr-2 pb-2">

@@ -6,6 +6,7 @@ import OurPolicy from '../components/OurPolicy'
 import NewsletterBox from '../components/NewsletterBox'
 import HeroTwo from '../components/HeroTwo'
 import PeshawariChappalCollection from '../components/PeshawariChappalCollection'
+import Slider from '../components/Slider'
 
 
 const home = () => {
@@ -71,7 +72,7 @@ const home = () => {
       </Helmet>
 
       <div>
-        <HeroTwo/>
+        <Slider/>
         <HotSelling />
         <JewelleryCollection />
         <PeshawariChappalCollection/>      

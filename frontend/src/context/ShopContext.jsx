@@ -139,16 +139,13 @@ const ShopContextProvider = (props) => {
 
     const getProductsData = async () => {
         try {
-            // setIsLoading(true)
             const response = await axios.post(backendUrl + '/api/product/list', {fetchLimit, offset})
             if(response.data.products.length > 0) {
                 setProducts(prev => [...prev, ...response.data.products])
                 setOffset(offset => offset + fetchLimit)
-                // setIsLoading(false)
             } else {
                 toast.error(response.data.message)
                 // return
-                // setIsLoading(false)
             }
 
         } catch (error) {
