@@ -4,6 +4,7 @@ import { assets } from "../assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 import { Helmet } from "react-helmet-async";
+import SingleProductCarousel from "../components/SingleProductCarousel"
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
@@ -13,6 +14,13 @@ const Collection = () => {
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("relevant");
 
+  const sampleItems = [
+    { name: 'T-Shirt', price: 19.99, image: 'https://media.istockphoto.com/id/1726263781/vector/blank-black-t-shirt-template.jpg?s=612x612&w=0&k=20&c=D99VMv8nYh1tmSZO61Do3OYbUldC4JMQt7OiyyTaLG8=' },
+    { name: 'Sneakers', price: 59.99, image: 'https://t4.ftcdn.net/jpg/04/42/54/79/360_F_442547913_tWYOcGkO06Vbo30KOvrOPte5JqDHVWmR.jpg' },
+    { name: 'Hoodie', price: 39.99, image: 'https://static.vecteezy.com/system/resources/thumbnails/026/325/400/small/white-hoodie-mockup-empty-and-3d-isolated-on-a-plain-background-ai-generated-photo.jpg' },
+    { name: 'Watch', price: 89.99, image: 'https://media.istockphoto.com/id/1065329058/photo/premium-mens-watch-on-hand-close-up.jpg?s=612x612&w=0&k=20&c=VdpUac8ObrDZZ0I8OCD_vOxPqyOUCa3cM8zoqXsPkuE=' },
+  ];
+  
   const getCollectionSchemaJson = () => {
     const schema = {
       "@context": "https://schema.org",
@@ -55,18 +63,18 @@ const Collection = () => {
 
     if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+        item.name.toLowerCase().includes(search.toLowerCase()),
       );
     }
     if (category.length > 0) {
       productsCopy = productsCopy.filter((item) =>
-        category.includes(item.category)
+        category.includes(item.category),
       );
     }
 
     if (subCategory.length > 0) {
       productsCopy = productsCopy.filter((item) =>
-        subCategory.includes(item.subCategory)
+        subCategory.includes(item.subCategory),
       );
     }
 
@@ -79,13 +87,13 @@ const Collection = () => {
     switch (sortType) {
       case "low-high":
         setFilterProducts(
-          filteredProductsCopy.sort((a, b) => a.price - b.price)
+          filteredProductsCopy.sort((a, b) => a.price - b.price),
         );
         break;
 
       case "high-low":
         setFilterProducts(
-          filteredProductsCopy.sort((a, b) => b.price - a.price)
+          filteredProductsCopy.sort((a, b) => b.price - a.price),
         );
         break;
 
@@ -138,44 +146,34 @@ const Collection = () => {
         <script type="application/ld+json">{getCollectionSchemaJson()}</script>
       </Helmet>
 
+      <div className="flex h-72 flex-col sm:flex-row bg-gray-100">    
+          <div className="flex flex-col sm:flex-row w-full h-full items-center justify-between mx-auto">
+            <div className="flex items-center justify-center w-full h-1/2 sm:w-1/2 sm:h-full bg-cover bg-center bg-[url(/background.jpg)]">
+              <h2 className="text-2xl font-semibold">New Arrivals</h2>
+            </div>
 
-      <div className="flex flex-col sm:flex-row bg-gray-100">
-        <div class="w-full sm:w-2/3 flex flex-col items-center justify-center gap-8">
+            <div className="w-full h-1/2 sm:w-1/2 sm:h-full">
+              <SingleProductCarousel items={sampleItems} />
+            </div>
+                 </div>
+          
+        {/* <div class="w-full sm:w-2/3 flex flex-col items-center justify-center gap-8">
           <h1 class="text-4xl font-semibold leading-[48px] text-gray-700 text-center montserrat-bold">
-            
-            Grab up to<br/> <span className="bg-gradient-to-tr from-blue-400 to-pink-400 bg-clip-text text-transparent">20%</span> OFF<br/> on<br/> Selected Products
-            {/* Grab up to <br/><span>20%</span>off on
-            <br /> Selected Products */}
-          </h1>
-        </div>
-
-        <div className="relative w-full rounded-lg shadow-md">
-          <img src="./banner.png" alt="" />
-      </div>
-      </div>
-{/* <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGprDrigoo&#x2F;l9zlAQer_HBLMvBA9FBjJw&#x2F;view?utm_content=DAGprDrigoo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Clothing Rack Boutique Fashion Banner Landscape</a> */}
-{/* 
-
-      <div class="hidden bg-pink-50 px-4 sm:flex justify-between h-64">
-        <div class="w-2/3 flex flex-col items-center justify-center gap-8">
-          <h1 class="text-4xl font-semibold leading-[48px] text-gray-700">
-            Grab up to 20% off on
+            Grab up to
+            <br />{" "}
+            <span className="bg-gradient-to-tr from-blue-400 to-pink-400 bg-clip-text text-transparent">
+              20%
+            </span>{" "}
+            OFF
+            <br /> on
             <br /> Selected Products
-          </h1>
-          <button class="rounded-3xl bg-lama text-white w-max py-3 px-5 text-sm">
-            Buy Now
-          </button>
-        </div>
-        <div class="relative w-1/3">
-          <img
-            // src="https://plus.unsplash.com/premium_photo-1672883551961-dd625e47990a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            src="https://as2.ftcdn.net/jpg/03/67/56/73/1000_F_367567354_JnT96QOWu8rugfLdYaESxWkqaIOUja8t.webp"           
-            alt=""
-            loading="lazy"
-            class="object-contain absolute h-full w-full inset-0 text-transparent"
-          />
-        </div>
-      </div> */}
+          </h1> */}
+        {/* </div> */}
+
+        {/* <div className="relative w-full rounded-lg shadow-md">
+          <img src="./banner_1.png" alt="" />
+        </div> */}
+      </div>
       <div className="flex flex-col sm:flex-row gap-10 pt-10 border-t">
         {/* Filter Options */}
         <div className="min-w-60">
@@ -203,28 +201,19 @@ const Collection = () => {
                 <input
                   type="checkbox"
                   className="w-3"
-                  value={"Necklaces"}
+                  value={"Artificial Jewellery"}
                   onChange={toggleCategory}
                 />{" "}
-                Necklaces
+                Artificial Jewellery
               </p>
               <p className="flex gap-2">
                 <input
                   type="checkbox"
                   className="w-3"
-                  value={"Earrings"}
+                  value={"Peshawari Chappals"}
                   onChange={toggleCategory}
                 />{" "}
-                Earrings
-              </p>
-              <p className="flex gap-2">
-                <input
-                  type="checkbox"
-                  className="w-3"
-                  value={"Rings"}
-                  onChange={toggleCategory}
-                />{" "}
-                Rings
+                Peshawari Chappals
               </p>
             </div>
           </div>
@@ -235,29 +224,27 @@ const Collection = () => {
               showFilter ? "" : "hidden"
             } sm:block`}
           >
-            <p className="mb-3 text-sm font-medium">TYPE</p>
+            <p className="mb-3 text-sm font-medium">SUB CATEGORIES</p>
             <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
               <p className="flex gap-2">
                 <input
                   type="checkbox"
                   className="w-3"
-                  value={"Golden"}
+                  value={"Necklaces"}
                   onChange={toggleSubCategory}
                 />{" "}
-                Golden
+                Necklaces
               </p>
               <p className="flex gap-2">
                 <input
                   type="checkbox"
                   className="w-3"
-                  value={"Silver"}
+                  value={"Earrings"}
                   onChange={toggleSubCategory}
                 />{" "}
-                Silver
+                Earrings
               </p>
-              {/* <p className='flex gap-2'>
-              <input type="checkbox" className='w-3' value={'Copper'} onChange={toggleSubCategory}/> Winterwear
-            </p> */}
+            
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { LoadingTwo } from "./Loading";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProductItem = ({ id, image, name, price }) => {
@@ -29,7 +28,9 @@ const ProductItem = ({ id, image, name, price }) => {
           alt={`${name} artificial jewellery`}
         />
 
-        <span className="montserrat-bold absolute top-2 right-2 w-[40%] h-auto text-center  rounded-lg bg-gradient-to-tr from-blue-400 to-pink-400 text-nowrap text-sm text-slate-100 py-1/2">{`${discount}% OFF`}</span>
+        <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-100 to-gray-300/2 text-gray-800/2 font-semibold py-1 px-3 rounded-full shadow-md">
+          {discount}% OFF
+        </div>
       </div>
 
       <div className="pl-2 pr-2 pb-2">

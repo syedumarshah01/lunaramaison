@@ -7,7 +7,7 @@ import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency, addToCart, discount, navigate } =
+  const { products, currency, addToCart, discount, navigate, token } =
     useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
@@ -15,6 +15,8 @@ const Product = () => {
   const [color, setColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [productDetailsFlag, setProductDetailsFlag] = useState("description");
+  const pathname = window.location.pathname
+  
 
 
   const getProductSchemaJson = () => {
@@ -44,9 +46,21 @@ const Product = () => {
 
 
   const onClickBuyHandler = async () => {
+    if(!token) {
+      navigate(`/login?redirect=${pathname}`)
+      return
+    }
     const isAdded = await addToCart(productData._id, size, color, Number(quantity));
     if (isAdded) navigate("/cart");
   };
+
+  const onClickAddToCartHandler = async () => {
+    if(!token) {
+      navigate(`/login?redirect=${pathname}`)
+      return
+    }
+    await addToCart(productData._id, size, color, Number(quantity));
+  }
 
   const fetchProductData = async () => {
     const product = products.find((item) => item._id === productId)
@@ -208,9 +222,7 @@ const Product = () => {
 
             <div className="w-[60%] flex gap-4 text-nowrap">
               <button
-                onClick={() =>
-                  addToCart(productData._id, size, color, Number(quantity))
-                }
+                onClick={onClickAddToCartHandler}
                 className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
               >
                 ADD TO CART

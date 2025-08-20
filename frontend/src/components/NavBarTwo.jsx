@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FiShoppingCart, FiUser, FiMenu, FiSearch } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { assets } from "../assets/assets";
@@ -116,9 +116,7 @@ const NavBarTwo = () => {
                 {token && (
                   <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
                     <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-                      <p className="cursor-pointer hover:text-black">
-                        My Profile
-                      </p>
+                      
                       <p
                         onClick={() => navigate("/orders")}
                         className="cursor-pointer hover:text-black"
