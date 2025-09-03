@@ -146,35 +146,17 @@ const Collection = () => {
         <script type="application/ld+json">{getCollectionSchemaJson()}</script>
       </Helmet>
 
-      <div className="flex h-72 flex-col sm:flex-row bg-gray-100">    
-          <div className="flex flex-col sm:flex-row w-full h-full items-center justify-between mx-auto">
-            <div className="flex items-center justify-center w-full h-1/2 sm:w-1/2 sm:h-full bg-cover bg-center bg-[url(/background.jpg)]">
+          <div className="flex flex-col sm:flex-row w-full h-72 items-center justify-between mx-auto">
+            <div className="flex items-center justify-center w-full h-1/2 sm:w-1/2 sm:h-full bg-cover bg-center bg-[url(/background.jpg)] sm:rounded-tl-lg sm:rounded-bl-lg">
               <h2 className="text-2xl font-semibold">New Arrivals</h2>
             </div>
 
             <div className="w-full h-1/2 sm:w-1/2 sm:h-full">
               <SingleProductCarousel items={sampleItems} />
             </div>
-                 </div>
+          </div>
           
-        {/* <div class="w-full sm:w-2/3 flex flex-col items-center justify-center gap-8">
-          <h1 class="text-4xl font-semibold leading-[48px] text-gray-700 text-center montserrat-bold">
-            Grab up to
-            <br />{" "}
-            <span className="bg-gradient-to-tr from-blue-400 to-pink-400 bg-clip-text text-transparent">
-              20%
-            </span>{" "}
-            OFF
-            <br /> on
-            <br /> Selected Products
-          </h1> */}
-        {/* </div> */}
-
-        {/* <div className="relative w-full rounded-lg shadow-md">
-          <img src="./banner_1.png" alt="" />
-        </div> */}
-      </div>
-      <div className="flex flex-col sm:flex-row gap-10 pt-10 border-t">
+      <div className="flex flex-col sm:flex-row gap-10 pt-10">
         {/* Filter Options */}
         <div className="min-w-60">
           <p

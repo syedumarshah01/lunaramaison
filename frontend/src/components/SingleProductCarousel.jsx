@@ -24,7 +24,7 @@ const SingleProductCarousel = ({ items }) => {
   const currentItem = items[currentIndex];
 
   return (
-    <div className="relative w-full h-full bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="relative w-full h-full bg-white sm:rounded-tr-lg sm:rounded-br-lg shadow-lg overflow-hidden">
       {/* Product Display */}
       <div className="flex flex-col items-center h-full text-center">
         <img
@@ -36,13 +36,13 @@ const SingleProductCarousel = ({ items }) => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-full text-xl hover:bg-gray-100"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-100/2 shadow p-2 rounded-full text-xl hover:bg-gray-100"
         onClick={goToPrevious}
       >
         ‹
       </button>
       <button
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-full text-xl hover:bg-gray-100"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-100/2 shadow p-2 rounded-full text-xl hover:bg-gray-100"
         onClick={goToNext}
       >
         ›

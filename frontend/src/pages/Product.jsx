@@ -4,6 +4,8 @@ import {Helmet} from 'react-helmet-async'
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
+import SizeSelector from "../components/SizeSelector"
+import { ImageModal } from "../components/ImageModal";
 
 const Product = () => {
   const { productId } = useParams();
@@ -100,7 +102,7 @@ const Product = () => {
         <div className="flex gap-12 flex-col sm:flex-row">
           {/* Product Images */}
           <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
-            <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
+            <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll gap-2 sm:justify-normal sm:w-[18.7%] w-full">
               {productData.image.map((item, index) => (
                 <img
                   onClick={() => setImage(item)}
@@ -137,6 +139,7 @@ const Product = () => {
             {productData.description}
           </p> */}
 
+            
             {productData.colors.length > 0 && productData.sizes.length > 0 ? (
               <>
                 <div className="flex flex-col gap-4 my-8">
@@ -155,22 +158,13 @@ const Product = () => {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col gap-4 my-8">
-                  <p>Select Size</p>
-                  <div className="flex gap-2">
-                    {productData.sizes.map((item, index) => (
-                      <button
-                        onClick={() => setSize(item)}
-                        className={`border py-2 px-4 bg-gray-100 ${
-                          item === size ? "border-orange-500" : ""
-                        }`}
-                        key={index}
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                </div>{" "}
+
+                <div>
+                  <SizeSelector/>
+                  <ImageModal/>
+                </div>
+    
+                
               </>
             ) : productData.colors.length > 0 ? (
               <div className="flex flex-col gap-4 my-8">
@@ -190,21 +184,9 @@ const Product = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col gap-4 my-8">
-                <p>Select Size</p>
-                <div className="flex gap-2">
-                  {productData.sizes.map((item, index) => (
-                    <button
-                      onClick={() => setSize(item)}
-                      className={`border py-2 px-4 bg-gray-100 ${
-                        item === size ? "border-orange-500" : ""
-                      }`}
-                      key={index}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
+              <div>
+                <SizeSelector/>
+                <ImageModal/>
               </div>
             )}
 
@@ -215,7 +197,7 @@ const Product = () => {
                 onChange={(e) => setQuantity(e.target.value)}
                 name="quantity"
                 value={quantity}
-                className="border border-gray-300 rounded py-1.5 px-3.5 w-[15%] mb-3"
+                className="border border-gray-300 rounded py-1.5 px-3.5 w-[15%] mb-3 text-center"
                 type="number"
               />
             </div>
@@ -250,13 +232,13 @@ const Product = () => {
           <div className="flex">
             <p
               onClick={() => setProductDetailsFlag("description")}
-              className="border px-5 py-3 text-sm"
+              className={`border px-5 py-3 text-sm ${productDetailsFlag === "description" ? "bg-black text-white" : ""}`}
             >
               Description
             </p>
             <p
               onClick={() => setProductDetailsFlag("features")}
-              className="border px-5 py-3 text-sm"
+              className={`border px-5 py-3 text-sm ${productDetailsFlag === "features" ? "bg-black text-white" : ""}`}
             >
               Features
             </p>

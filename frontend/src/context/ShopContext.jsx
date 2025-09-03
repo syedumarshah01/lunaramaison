@@ -1,4 +1,4 @@
-import { createContext,useEffect, useState } from "react";
+import { createContext,useEffect, useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
@@ -6,7 +6,8 @@ import axios from 'axios'
 export const ShopContext = createContext()
 
 const ShopContextProvider = (props) => {
-    
+    const jewellerySectionRef = useRef(null)
+    const peshawariChappalSectionRef = useRef(null)
     const fetchLimit = 2
     const currency = 'PKR'
     const discount = 20

@@ -28,7 +28,7 @@ const ProductItem = ({ id, image, name, price }) => {
           alt={`${name} artificial jewellery`}
         />
 
-        <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-100 to-gray-300/2 text-gray-800/2 font-semibold py-1 px-3 rounded-full shadow-md">
+        <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-100 to-gray-300/[50%] text-gray-800/2 font-semibold py-1 px-3 rounded-full shadow-md">
           {discount}% OFF
         </div>
       </div>

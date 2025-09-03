@@ -6,7 +6,6 @@ import React, {
 import { ShopContext } from "../context/ShopContext";
 import Title from "./Title";
 import ProductItem from "./ProductItem";
-import { LoadingOne } from "./Loading";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import ProductSkeleton from "./ProductSkeleton"
@@ -51,7 +50,7 @@ const JewelleryCollection = () => {
   }, [products]);
 
   return (
-    <div className="my-10 jewelleryCollection" data-aos="fade-up">
+    <div id="jewellery-collection" className="my-10 jewelleryCollection" data-aos="fade-up">
       <div className="text-center py-8 text-3xl">
         <Title text1={"JEWELLERY"} text2={"COLLECTION"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
