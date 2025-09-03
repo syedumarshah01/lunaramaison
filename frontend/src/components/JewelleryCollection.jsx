@@ -45,8 +45,8 @@ const JewelleryCollection = () => {
   useEffect(() => {
     const screenWidth = window.innerWidth;
     const itemsPerPage = screenWidth < 640 ? 4 : 10;
-
-    setLatestProducts(products.slice(0, itemsPerPage));
+    const artificialJewelleryProducts = products.filter((product) => product.category === "Artificial Jewellery")
+    setLatestProducts(artificialJewelleryProducts.slice(0, itemsPerPage));
   }, [products]);
 
   return (
