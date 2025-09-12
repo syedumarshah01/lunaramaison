@@ -185,7 +185,7 @@ const Product = () => {
               </div>
             ) : (
               <div>
-                <SizeSelector/>
+                <SizeSelector setColor={setSize}/>
                 <ImageModal/>
               </div>
             )}

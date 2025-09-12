@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-const SizeSelector = () => {
-  const [selectedSize, setSelectedSize] = useState("");
+const SizeSelector = ({setSize}) => {
 
   const handleChange = (event) => {
-    setSelectedSize(event.target.value);
+    setSize(event.target.value);
   };
 
   const handleReset = () => {
-    setSelectedSize("");
+    setSize("");
   };
 
   return (
@@ -22,9 +21,7 @@ const SizeSelector = () => {
         onChange={handleChange}
       >
         <option value="">Choose an option</option>
-        <option value="us-6-eu-39-uk-5-5">
-          US 6 / EU 39 / UK 5.5
-        </option>
+        <option value="us-6-eu-39-uk-5-5">US 6 / EU 39 / UK 5.5</option>
         <option value="us-7-eu-40-uk-6-5">US 7 / EU 40 / UK 6.5</option>
         <option value="us-8-eu-41-uk-7-5">US 8 / EU 41 / UK 7.5</option>
         <option value="us-9-eu-42-uk-8-5">US 9 / EU 42 / UK 8.5</option>

@@ -44,32 +44,6 @@ const addToCart = async (req, res) => {
                 cartData[itemId][color] = quantity
             }
         }
-        // if(size) {
-        //     if(cartData[itemId]) {
-        //         if(cartData[itemId][size]) {
-        //             cartData[itemId][size] += 1
-        //         } else {
-        //             cartData[itemId][size] = 1
-        //         }
-        //     } else {
-        //         cartData[itemId] = {}
-        //         cartData[itemId][size] = 1
-        //     }
-        // }
-        
-        // if(color) {
-        //     if(cartData[itemId]) {
-        //         if(cartData[itemId][color]) {
-        //             cartData[itemId][color] += 1
-        //         } else {
-        //             cartData[itemId][color] = 1
-        //         }
-        //     } else {
-        //         cartData[itemId] = {}
-        //         cartData[itemId][color] = 1
-        //     }
-        // }
-        
 
         await userModel.findByIdAndUpdate(userId, {cartData})
         res.json({success: true, message: "Added to Cart"})
@@ -87,12 +61,6 @@ const updateCart = async (req, res) => {
         const userData = await userModel.findById(userId)
         let cartData = await userData.cartData
         
-        
-        // if(quantity === 0) {
-        //     delete cartData[itemId]
-        // } else {
-        //     cartData[itemId][size] = quantity
-        // }
         cartData[itemId][size] = quantity
 
         
@@ -126,3 +94,5 @@ const getUserCart = async (req, res) => {
 
 
 export {addToCart, updateCart, getUserCart}
+
+
