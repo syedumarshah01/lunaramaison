@@ -1,7 +1,4 @@
-// "use client";
 
-// import Image from "next/image";
-// import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -10,24 +7,19 @@ const slides = [
     id: 1,
     title: "Jewellery Collections",
     description: "Sale! Up to 20% off!",
-    img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/",
+    // img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg",
+    // img: "https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg",
+    url: "jewellery-collection",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
-  },
-  {
-    id: 2,
-    title: "Boutique Collections",
-    description: "Sale! Up to 20% off!",
-    img: "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
   },
   {
     id: 3,
     title: "Peshawari Chappal Collections",
     description: "Sale! Up to 20% off!",
-    img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-    url: "/",
+    // img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://pakhtunwardrobe.com/cdn/shop/products/MAD07715_1.jpg?v=1668556657",
+    url: "peshawari-chappal-collection",
     bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
   },
 ];
@@ -35,6 +27,11 @@ const slides = [
 const Slider = () => {
   const [current, setCurrent] = useState(0);
 
+  const handleShopNow = (url) => {
+    document.getElementById(url).scrollIntoView({ behavior: "smooth" })
+  }
+
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -62,11 +59,11 @@ const Slider = () => {
               <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">
                 {slide.title}
               </h1>
-              <Link to={slide.url}>
-                <button className="rounded-md bg-black text-white py-3 px-4 hover:bg-gray-800 transition-colors duration-300">
+              {/* <Link to={slide.url}> */}
+                <button onClick={() => handleShopNow(slide.url)} className="rounded-md bg-black text-white py-3 px-4 hover:bg-gray-800 transition-colors duration-300">
                   SHOP NOW
                 </button>
-              </Link>
+              {/* </Link> */}
             </div>
             {/* IMAGE CONTAINER */}
             <div className="h-1/2 lg:w-1/2 lg:h-full relative">
