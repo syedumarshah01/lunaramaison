@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SizeSelector = ({setSize}) => {
+const SizeSelector = ({size, setSize}) => {
 
   const handleChange = (event) => {
     setSize(event.target.value);
@@ -17,7 +17,7 @@ const SizeSelector = ({setSize}) => {
       </label>
       <select
         className="border border-gray-300 rounded py-1.5 px-3.5 mt-3 w-full max-w-[50%]"
-        value={selectedSize}
+        value={size}
         onChange={handleChange}
       >
         <option value="">Choose an option</option>
@@ -32,7 +32,7 @@ const SizeSelector = ({setSize}) => {
       </select>
       <div
         className="border border-gray-300 px-2 py-.5 w-fit rounded mt-3"
-        style={{ visibility: selectedSize ? "visible" : "hidden" }}
+        style={{ visibility: size ? "visible" : "hidden" }}
       >
         <a onClick={handleReset}>Clear</a>
       </div>

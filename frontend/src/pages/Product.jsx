@@ -160,7 +160,7 @@ const Product = () => {
                 </div>
 
                 <div>
-                  <SizeSelector/>
+                  <SizeSelector size={size} setSize={setSize}/>
                   <ImageModal/>
                 </div>
     
@@ -185,7 +185,7 @@ const Product = () => {
               </div>
             ) : (
               <div>
-                <SizeSelector setColor={setSize}/>
+                <SizeSelector size={size} setColor={setSize}/>
                 <ImageModal/>
               </div>
             )}
