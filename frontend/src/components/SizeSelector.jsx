@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const SizeSelector = ({size, setSize}) => {
+const SizeSelector = (props) => {
 
   const handleChange = (event) => {
-    setSize(event.target.value);
+    props.setSize(event.target.value);
   };
 
   const handleReset = () => {
-    setSize("");
+    props.setSize("");
   };
 
   return (
@@ -17,7 +17,7 @@ const SizeSelector = ({size, setSize}) => {
       </label>
       <select
         className="border border-gray-300 rounded py-1.5 px-3.5 mt-3 w-full max-w-[50%]"
-        value={size}
+        value={props.size}
         onChange={handleChange}
       >
         <option value="">Choose an option</option>
@@ -32,7 +32,7 @@ const SizeSelector = ({size, setSize}) => {
       </select>
       <div
         className="border border-gray-300 px-2 py-.5 w-fit rounded mt-3"
-        style={{ visibility: size ? "visible" : "hidden" }}
+        style={{ visibility: props.size ? "visible" : "hidden" }}
       >
         <a onClick={handleReset}>Clear</a>
       </div>

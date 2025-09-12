@@ -16,10 +16,10 @@ connectCloudinary()
 
 // Middlewares 
 app.use(express.json())
-// app.use(cors())
-app.use(cors({
-  origin: 'https://www.lunaramaison.com'
-}));
+app.use(cors())
+// app.use(cors({
+//   origin: 'https://www.lunaramaison.com'
+// }));
 
 
 // API Endpoints

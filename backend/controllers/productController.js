@@ -5,6 +5,7 @@ import productModel from '../models/productModel.js'
 const addProduct = async (req, res) => {
     try {        
         const { name, description, features, price, category, subCategory, sizes, colors, bestseller } = req.body
+        const peshawariChappalSizes = ["us-6-eu-39-uk-5-5", "us-7-eu-40-uk-6-5", "us-8-eu-41-uk-7-5", "us-9-eu-42-uk-8-5"]
 
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
@@ -28,7 +29,7 @@ const addProduct = async (req, res) => {
             price: Number(price),
             subCategory,
             bestseller: bestseller === "true" ? true: false,
-            sizes: JSON.parse(sizes),
+            sizes: category === "Peshawari Chappal" ? peshawariChappalSizes : JSON.parse(sizes),
             colors: JSON.parse(colors),
             image: imagesUrl,
             date: Date.now()
