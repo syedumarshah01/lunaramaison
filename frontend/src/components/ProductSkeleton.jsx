@@ -11,4 +11,20 @@ const ProductSkeleton = () => {
   );
 };
 
+
+export const ProductSkeletonTwo = () => {
+  return (
+    <div className='animate-pulse bg-white shadow-md rounded p-4 w-full'>
+      <div className='w-full h-48 bg-gray-300 rounded mb-4'></div>
+      <div className='bg-gray-300 h-6 w-full mb-2 rounded'></div>
+      <div className='flex justify-between h-4 gap-3'>
+        <div className='bg-gray-300 w-1/2 rounded'></div>
+        <div className='bg-gray-300 w-1/2 rounded'></div>
+      </div>
+      
+    </div>
+  )
+}
+
+
 export default ProductSkeleton;

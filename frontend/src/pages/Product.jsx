@@ -5,6 +5,7 @@ import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 import SizeSelector from "../components/SizeSelector"
+import { ImageModal } from "../components/ImageModal";
 
 const Product = () => {
   const { productId } = useParams();
@@ -160,7 +161,9 @@ const Product = () => {
 
                 <div>
                   <SizeSelector/>
+                  <ImageModal/>
                 </div>
+    
                 
               </>
             ) : productData.colors.length > 0 ? (
@@ -181,8 +184,9 @@ const Product = () => {
                 </div>
               </div>
             ) : (
-              <div className="mt-4">
+              <div>
                 <SizeSelector/>
+                <ImageModal/>
               </div>
             )}
 

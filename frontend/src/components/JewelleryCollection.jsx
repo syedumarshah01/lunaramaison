@@ -8,7 +8,7 @@ import Title from "./Title";
 import ProductItem from "./ProductItem";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import ProductSkeleton from "./ProductSkeleton"
+import ProductSkeleton, {ProductSkeletonTwo} from "./ProductSkeleton"
 
 const JewelleryCollection = () => {
   const { products } = useContext(ShopContext);
@@ -45,8 +45,8 @@ const JewelleryCollection = () => {
   useEffect(() => {
     const screenWidth = window.innerWidth;
     const itemsPerPage = screenWidth < 640 ? 4 : 10;
-
-    setLatestProducts(products.slice(0, itemsPerPage));
+    const artificialJewelleryProducts = products.filter((product) => product.category === "Artificial Jewellery")
+    setLatestProducts(artificialJewelleryProducts.slice(0, itemsPerPage));
   }, [products]);
 
   return (
@@ -61,7 +61,15 @@ const JewelleryCollection = () => {
 
       <div className="flex flex-col gap-16">
         {latestProducts.length === 0 ? (
-          <ProductSkeleton/>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+            {
+              [0, 1, 2, 3, 4].map(() => (
+                <ProductSkeletonTwo/>
+              ))
+            }
+              
+          </div>
+          
         ) : (
           // Rendering Products
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">

@@ -15,8 +15,8 @@ const Add = ({token}) => {
   const [description, setDescription] = useState('')
   const [features, setFeatures] = useState('')
   const [price, setPrice] = useState('')
-  const [category, setCategory] = useState('Necklaces')
-  const [subCategory, setSubCategory] = useState('Silver')
+  const [category, setCategory] = useState('Artificial Jewellery')
+  const [subCategory, setSubCategory] = useState('Earrings')
   const [bestseller, setBestseller] = useState(false)
   const [sizes, setSizes] = useState([])
   const [colors, setColors] = useState([])
@@ -114,21 +114,20 @@ const Add = ({token}) => {
         <div>
           <p className='mb-2'>Product Category</p>
           <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
-            <option value="Necklaces">Necklaces</option>
-            <option value="Earrings">Earrings</option>
-            <option value="Rings">Rings</option>
+            <option value="Artificial Jewellery">Artificial Jewellery</option>
+            <option value="Peshawari Chappal">Peshawari Chappal</option>
           </select>
         </div>
 
-        <div>
+        {category === "Artificial Jewellery" ? <div>
           <p className='mb-2'>Sub Category</p>
           <select onChange={(e) => setSubCategory(e.target.value)} className='w-full px-3 py-2'>
-            <option value="Golden">Golden</option>
-            <option value="Silver">Silver</option>
+            <option value="Necklaces">Necklaces</option>
+            <option value="Earrings">Earrings</option>
           </select>
-        </div>
+        </div>: <div></div>}
 
-        <div>
+        {category === "Artificial Jewellery" ? <div>
           <p className='mb-2'>Product Color</p>
           <input className='w-full px-3 py-2 sm:w-[120px] mt-1' onBlur={(e) => {
               setColors(e.target.value.length > 0 ? [...colors, e.target.value] : colors)
@@ -141,7 +140,7 @@ const Add = ({token}) => {
           <input className='w-full px-3 py-2 sm:w-[120px] mt-1' onBlur={(e) => {
               setColors(e.target.value.length > 0 ? [...colors, e.target.value] : colors)
           }} type="text" placeholder='Color Three'/>
-        </div>
+        </div>: <div></div>}
 
         <div>
           <p className='mb-2'>Product Price</p>
@@ -150,7 +149,7 @@ const Add = ({token}) => {
       </div>
 
 
-      <div>
+      {category === "Artificial Jewellery" ? <div>
         <p className='mb-2'>Product Sizes</p>
         <div className='flex gap-3'>
           <div onClick={() => setSizes(prev => prev.includes("S") ? prev.filter(item => item !== "S"): [...prev, "S"])}>
@@ -169,11 +168,11 @@ const Add = ({token}) => {
             <p className={`px-3 py-1 cursor-pointer ${sizes.includes('XXL')? 'bg-orange-200': 'bg-slate-200'}`}>XXL</p>
           </div>
         </div>
-      </div>
+      </div>: <div></div>}
 
       <div className='flex gap-2 mt-2'>
         <input onChange={() => setBestseller(prev => !prev)}  checked={bestseller} type="checkbox" id='bestseller'/>
-        <label className='cursor-pointer' htmlFor="bestseller">Add to bestseller</label>
+        <label className='cursor-pointer' htmlFor="bestseller">Add to Hot Selling</label>
       </div>
 
       <button className='w-28 py-3 mt-4 bg-black text-white' type='submit'>ADD</button>
