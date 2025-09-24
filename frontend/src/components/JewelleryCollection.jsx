@@ -8,35 +8,15 @@ import Title from "./Title";
 import ProductItem from "./ProductItem";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import ProductSkeleton, {ProductSkeletonTwo} from "./ProductSkeleton"
+import {ProductSkeletonTwo} from "./ProductSkeleton"
 
 const JewelleryCollection = () => {
-  const { products } = useContext(ShopContext);
+  const { products, navigate } = useContext(ShopContext);
   const [latestProducts, setLatestProducts] = useState([]);
-  const [productIndex, setProductIndex] = useState(0);
 
-  const handlePaginate = (direction) => {
-    setProductIndex((prevIndex) => {
-      const screenWidth = window.innerWidth;
-      const itemsPerPage = screenWidth < 640 ? 4 : 10;
-
-      const maxIndex = products.length;
-
-      let newIndex;
-
-      if (direction === "next") {
-        newIndex = prevIndex + itemsPerPage;
-        if (newIndex >= maxIndex) return prevIndex; // can't go further
-      } else if (direction === "prev") {
-        newIndex = Math.max(prevIndex - itemsPerPage, 0);
-      }
-
-      const newItems = products.slice(newIndex, newIndex + itemsPerPage);
-      setLatestProducts(newItems);
-
-      return newIndex;
-    });
-  };
+  const onViewAllClick = () => {
+    navigate("/collection")
+  }
 
   useEffect(() => {
     Aos.init({ duration: 2000, once: true });
@@ -84,23 +64,10 @@ const JewelleryCollection = () => {
             ))}
           </div>
         )}
+      </div>
 
-        <div className="self-center flex gap-8">
-          <button
-            disabled={productIndex === 0}
-            onClick={() => handlePaginate("prev")}
-            className="px-4 py-2 bg-gray-600 text-white rounded-full"
-          >
-            Prev
-          </button>
-          <button
-            disabled={productIndex >= products.length}
-            onClick={() => handlePaginate("next")}
-            className="px-4 py-2 bg-gray-600 text-white rounded-full"
-          >
-            Next
-          </button>
-        </div>
+      <div onClick={onViewAllClick} className="text-center mt-8 cursor-pointer">
+        <p className="inline border px-3 py-2 hover:bg-black hover:text-white rounded-full">View All</p>
       </div>
     </div>
   );

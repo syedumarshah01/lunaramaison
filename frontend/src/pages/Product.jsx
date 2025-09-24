@@ -6,6 +6,7 @@ import { assets } from "../assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 import SizeSelector from "../components/SizeSelector"
 import { ImageModal } from "../components/ImageModal";
+import CollapsibleList from "@/components/CollapsibleList";
 
 const Product = () => {
   const { productId } = useParams();
@@ -16,7 +17,6 @@ const Product = () => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [productDetailsFlag, setProductDetailsFlag] = useState("description");
   const pathname = window.location.pathname
   
 
@@ -119,7 +119,7 @@ const Product = () => {
           </div>
 
           {/* Product Info */}
-          <div className="flex-1 ">
+          <div className="flex-1 h-screen overflow-scroll">
             <h1 className="font-medium text-2xl mt-2">{productData.name}</h1>
             <div className="flex items-center gap-1 mt-2">
               <img src={assets.star_icon} alt="" className="w-3 5" />
@@ -131,18 +131,21 @@ const Product = () => {
               {/* <p className='pl-2 text-gray-500'>|</p> */}
               {/* <p className='pl-2 text-gray-500'>Sold: 1.4K</p> */}
             </div>
-            <p className="mt-5 text-3xl font-medium">
+            <div className="mt-5 flex items-center gap-4">
+              <p className="text-3xl font-medium">
               {currency}{" "}
               {productData.price - productData.price * (discount / 100)}
             </p>
-            {/* <p className="mt-5 text-gray-500 md:w-4/5">
-            {productData.description}
-          </p> */}
+            <p className="text-2xl line-through font-normal text-gray-700">
+              {currency}{" "}
+              {productData.price}
+            </p>
+            </div>
 
             
             {productData.colors.length > 0 && productData.sizes.length > 0 ? (
               <>
-                <div className="flex flex-col gap-4 my-8">
+                <div className="flex flex-col gap-4 mt-5">
                   <p>Select Color</p>
                   <div className="flex gap-2">
                     {productData.colors.map((item, index) => (
@@ -167,14 +170,14 @@ const Product = () => {
                 
               </>
             ) : productData.colors.length > 0 ? (
-              <div className="flex flex-col gap-4 my-8">
+              <div className="flex flex-col gap-4 mt-5">
                 <p>Select Color</p>
                 <div className="flex gap-2">
                   {productData.colors.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => setColor(item)}
-                      className={`border py-2 px-4 bg-gray-100 ${
+                      className={`border py-2 px-4 bg-gray-100 rounded-full ${
                         item === color ? "border-orange-500" : ""
                       }`}
                     >
@@ -184,75 +187,42 @@ const Product = () => {
                 </div>
               </div>
             ) : (
-              <div>
+              <div className="mt-5">
                 <SizeSelector size={size} setSize={setSize}/>
                 <ImageModal/>
               </div>
             )}
 
-            <div>
+            <div className="mt-5">
               <label htmlFor="quantity">Quantity: </label>
               <input
                 required
                 onChange={(e) => setQuantity(e.target.value)}
                 name="quantity"
                 value={quantity}
-                className="border border-gray-300 rounded py-1.5 px-3.5 w-[15%] mb-3 text-center"
+                className="border border-gray-300 rounded-full py-1.5 px-3.5 w-[15%] ml-3 text-center font-normal"
                 type="number"
               />
             </div>
 
-            <div className="w-[60%] flex gap-4 text-nowrap">
+            <div className="w-[60%] flex gap-4 text-nowrap mt-5">
               <button
                 onClick={onClickAddToCartHandler}
-                className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+                className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700 rounded-full"
               >
                 ADD TO CART
               </button>
 
               <button
                 onClick={onClickBuyHandler}
-                className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+                className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700 rounded-full"
               >
                 BUY NOW
               </button>
             </div>
 
-            <hr className="mt-8 sm:w-4/5" />
-            <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
-              <p>100% Original product.</p>
-              <p>Cash on Delivery is available on this product.</p>
-              <p>Easy return and exchange policy within 7 days.</p>
-            </div>
+            <CollapsibleList productData={productData}/>
           </div>
-        </div>
-
-        {/* Description and Review */}
-        <div className="mt-20">
-          <div className="flex">
-            <p
-              onClick={() => setProductDetailsFlag("description")}
-              className={`border px-5 py-3 text-sm ${productDetailsFlag === "description" ? "bg-black text-white" : ""}`}
-            >
-              Description
-            </p>
-            <p
-              onClick={() => setProductDetailsFlag("features")}
-              className={`border px-5 py-3 text-sm ${productDetailsFlag === "features" ? "bg-black text-white" : ""}`}
-            >
-              Features
-            </p>
-          </div>
-
-          {productDetailsFlag === "description" ? (
-            <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
-              <pre className="text-wrap">{productData.description}</pre>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
-              <pre className="text-wrap">{productData.features}</pre>
-            </div>
-          )}
         </div>
 
         {/* Display Related Products */}

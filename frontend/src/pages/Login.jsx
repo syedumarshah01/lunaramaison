@@ -112,7 +112,7 @@ const Login = () => {
         )}
       </div>
 
-      <button type="submit" className="bg-black text-white font-light px-8 py-2 mt-4">
+      <button type="submit" className="bg-black text-white font-light px-8 py-2 mt-4 rounded-full">
         {currentState === "Login" ? "Sign In" : "Sign Up"}
       </button>
     </form>

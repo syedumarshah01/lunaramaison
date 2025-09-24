@@ -11,15 +11,15 @@ const SizeSelector = (props) => {
   };
 
   return (
-    <div className="w-full flex flex-col mt-4">
+    <div className="w-full flex flex-col">
       <label htmlFor="">
         Size<span>: </span>
       </label>
       <select
-        className="border border-gray-300 rounded py-1.5 px-3.5 mt-3 w-full max-w-[50%]"
+        className="border border-gray-300 rounded-full py-1.5 px-3.5 mt-2 w-full max-w-[50%] text-sm"
         value={props.size}
         onChange={handleChange}
-      >
+      > 
         <option value="">Choose an option</option>
         <option value="us-6-eu-39-uk-5-5">US 6 / EU 39 / UK 5.5</option>
         <option value="us-7-eu-40-uk-6-5">US 7 / EU 40 / UK 6.5</option>

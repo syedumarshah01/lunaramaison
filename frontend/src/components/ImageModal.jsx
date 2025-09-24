@@ -7,10 +7,10 @@ export const ImageModal = () => {
 
     return (
         <div>
-            <div onClick={() => setIsOpen(!isOpen)} className='flex items-center cursor-pointer w-fit mb-4'>
+            <div onClick={() => setIsOpen(!isOpen)} className='flex items-center cursor-pointer w-fit'>
                 
                 <p>Size Guide</p>
-                <img src="/size_guide.png" className='w-16 h-16' alt="" />
+                <img src="/size_guide.png" className='w-12 h-12' alt="" />
             </div>
             
             {

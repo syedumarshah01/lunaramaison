@@ -16,7 +16,7 @@ const ProductItem = ({ id, image, name, price }) => {
       <div className="relative overflow-hidden basis-3/4">
         {/* <img className='hover:scale-110 transition ease-in-out h-full w-full' src={image[0]} alt=""/> */}
         <LazyLoadImage
-          className="w-full h-48 hover:scale-110 transition ease-in-out rounded-md"
+          className="w-full h-60 hover:scale-110 transition ease-in-out rounded-md"
           src={image}
           // placeholder={<LoadingTwo/>}
           effect="blur"

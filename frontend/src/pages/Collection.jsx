@@ -4,22 +4,14 @@ import { assets } from "../assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 import { Helmet } from "react-helmet-async";
-import SingleProductCarousel from "../components/SingleProductCarousel"
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
-  const [subCategory, setSubCategory] = useState([]);
+  // const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState("relevant");
-
-  const sampleItems = [
-    { name: 'T-Shirt', price: 19.99, image: 'https://media.istockphoto.com/id/1726263781/vector/blank-black-t-shirt-template.jpg?s=612x612&w=0&k=20&c=D99VMv8nYh1tmSZO61Do3OYbUldC4JMQt7OiyyTaLG8=' },
-    { name: 'Sneakers', price: 59.99, image: 'https://t4.ftcdn.net/jpg/04/42/54/79/360_F_442547913_tWYOcGkO06Vbo30KOvrOPte5JqDHVWmR.jpg' },
-    { name: 'Hoodie', price: 39.99, image: 'https://static.vecteezy.com/system/resources/thumbnails/026/325/400/small/white-hoodie-mockup-empty-and-3d-isolated-on-a-plain-background-ai-generated-photo.jpg' },
-    { name: 'Watch', price: 89.99, image: 'https://media.istockphoto.com/id/1065329058/photo/premium-mens-watch-on-hand-close-up.jpg?s=612x612&w=0&k=20&c=VdpUac8ObrDZZ0I8OCD_vOxPqyOUCa3cM8zoqXsPkuE=' },
-  ];
   
   const getCollectionSchemaJson = () => {
     const schema = {
@@ -43,6 +35,7 @@ const Collection = () => {
   };
 
   const toggleCategory = (e) => {
+    console.log(category)
     if (category.includes(e.target.value)) {
       setCategory((prev) => prev.filter((item) => item !== e.target.value));
     } else {
@@ -50,13 +43,13 @@ const Collection = () => {
     }
   };
 
-  const toggleSubCategory = (e) => {
-    if (subCategory.includes(e.target.value)) {
-      setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
-    } else {
-      setSubCategory((prev) => [...prev, e.target.value]);
-    }
-  };
+  // const toggleSubCategory = (e) => {
+  //   if (subCategory.includes(e.target.value)) {
+  //     setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
+  //   } else {
+  //     setSubCategory((prev) => [...prev, e.target.value]);
+  //   }
+  // };
 
   const applyFilter = () => {
     let productsCopy = products.slice();
@@ -72,11 +65,11 @@ const Collection = () => {
       );
     }
 
-    if (subCategory.length > 0) {
-      productsCopy = productsCopy.filter((item) =>
-        subCategory.includes(item.subCategory),
-      );
-    }
+    // if (subCategory.length > 0) {
+    //   productsCopy = productsCopy.filter((item) =>
+    //     subCategory.includes(item.subCategory),
+    //   );
+    // }
 
     setFilterProducts(productsCopy);
   };
@@ -105,7 +98,7 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory, search, showSearch, products]);
+  }, [category, search, showSearch, products]);
 
   useEffect(() => {
     sortProduct();
@@ -145,16 +138,6 @@ const Collection = () => {
 
         <script type="application/ld+json">{getCollectionSchemaJson()}</script>
       </Helmet>
-
-          <div className="flex flex-col sm:flex-row w-full h-72 items-center justify-between mx-auto">
-            <div className="flex items-center justify-center w-full h-1/2 sm:w-1/2 sm:h-full bg-cover bg-center bg-[url(/background.jpg)] sm:rounded-tl-lg sm:rounded-bl-lg">
-              <h2 className="text-2xl font-semibold">New Arrivals</h2>
-            </div>
-
-            <div className="w-full h-1/2 sm:w-1/2 sm:h-full">
-              <SingleProductCarousel items={sampleItems} />
-            </div>
-          </div>
           
       <div className="flex flex-col sm:flex-row gap-10 pt-10">
         {/* Filter Options */}
@@ -192,16 +175,16 @@ const Collection = () => {
                 <input
                   type="checkbox"
                   className="w-3"
-                  value={"Peshawari Chappals"}
+                  value={"Peshawari Chappal"}
                   onChange={toggleCategory}
                 />{" "}
-                Peshawari Chappals
+                Peshawari Chappal
               </p>
             </div>
           </div>
 
           {/* SubCategory Filter */}
-          <div
+          {/* <div
             className={`border border-gray-300 pl-5 py-3 my-5 rounded-2xl ${
               showFilter ? "" : "hidden"
             } sm:block`}
@@ -228,7 +211,7 @@ const Collection = () => {
               </p>
             
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Side */}

@@ -12,8 +12,8 @@ const About = () => {
 
       <div className="my-10 flex flex-col md:flex-row gap-16">
         <img
-          className="w-full md:max-w-[450px]"
-          src={assets.about_img}
+          className="w-full md:max-w-[450px] rounded-xl"
+          src="/about-us.webp"
           alt="about"
           loading="lazy"
         />

@@ -1,15 +1,12 @@
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const slides = [
   {
     id: 1,
     title: "Jewellery Collections",
     description: "Sale! Up to 20% off!",
-    // img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
-    img: "https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg",
-    // img: "https://images.pexels.com/photos/177332/pexels-photo-177332.jpeg",
+    img: "/slide-1.webp",
     url: "jewellery-collection",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
   },
@@ -17,8 +14,7 @@ const slides = [
     id: 3,
     title: "Peshawari Chappal Collections",
     description: "Sale! Up to 20% off!",
-    // img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
-    img: "https://pakhtunwardrobe.com/cdn/shop/products/MAD07715_1.jpg?v=1668556657",
+    img: "slide-2.webp",
     url: "peshawari-chappal-collection",
     bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
   },
