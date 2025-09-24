@@ -1,20 +1,32 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-
+import React, { useEffect, lazy, Suspense} from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Collection from "./pages/Collection";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Cart from "./pages/Cart";
-import Login from "./pages/Login";
-import PlaceOrder from "./pages/PlaceOrder";
-import Orders from "./pages/Orders";
+
+const Collection = lazy(() => import("./pages/Collection"))
+const About = lazy(() => import("./pages/About"))
+const Home = lazy(() => import("./pages/Home"))
+const Product = lazy(() => import("./pages/Product"))
+const Cart = lazy(() => import("./pages/Cart"))
+const Login = lazy(() => import("./pages/Login"))
+const PlaceOrder = lazy(() => import("./pages/PlaceOrder"))
+const Orders = lazy(() => import("./pages/Orders"))
+const ContactUs = lazy(() => import("./pages/ContactUs"))
+
+// import Collection from "./pages/Collection";
+// import About from "./pages/About";
+// import Home from "./pages/Home";
+// import Product from "./pages/Product";
+// import Cart from "./pages/Cart";
+// import Login from "./pages/Login";
+// import PlaceOrder from "./pages/PlaceOrder";
+// import Orders from "./pages/Orders";
+// import ContactUs from "./pages/ContactUs";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBarTwo from "./components/NavBarTwo";
-import ContactUs from "./pages/ContactUs";
+import LoadingSpinner from "./components/LoadingSpinner";
+
 
 function ScrollToTop() {
   const location = useLocation();
@@ -35,7 +47,7 @@ const App = () => {
         <ScrollToTop />
         <NavBarTwo/>
         <SearchBar />
-
+      <Suspense fallback={<LoadingSpinner/>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
@@ -47,6 +59,7 @@ const App = () => {
           <Route path="/place-order" element={<PlaceOrder />} />
           <Route path="/orders" element={<Orders />} />
         </Routes>
+      </Suspense>
 
         <Footer />
       </>

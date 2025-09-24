@@ -16,12 +16,10 @@ export const ImageModal = () => {
             {
                 isOpen ? <div className='fixed inset-0 bg-opacity-20 z-50'>
                     <div className='p-4 bg-white w-screen h-screen flex flex-col items-center justify-center'>
-                        <p>Size Chart</p>
-                        <p className='h-0.5 bg-black w-3/4 mb-1'></p>
-                        <div className='flex justify-end w-3/4 mb-1 text-center'>
-                            <p onClick={() => setIsOpen(!isOpen)} className='w-12 h-fit border border-black p-2 rounded-full cursor-pointer text-sm font-extrabold'>X</p>
+                        <div className='flex justify-center w-full sm:w-1/2 mb-1 text-center'>
+                            <p onClick={() => setIsOpen(!isOpen)} className='w-8 h-8 border border-black py-2 rounded-full cursor-pointer text-xs font-extrabold hover:bg-black hover:text-white'>X</p>
                         </div>
-                        <img src="/chappal_sizes.webp" className='w-3/4 h-3/4' alt="" />
+                        <img src="/chappal_sizes.webp" className='w-full sm:w-1/2 h-3/4' alt="" />
                         
                     </div>
                 </div>: null

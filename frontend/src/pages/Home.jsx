@@ -4,7 +4,6 @@ import JewelleryCollection from '../components/JewelleryCollection'
 import HotSelling from '../components/HotSelling'
 import OurPolicy from '../components/OurPolicy'
 import NewsletterBox from '../components/NewsletterBox'
-import HeroTwo from '../components/HeroTwo'
 import PeshawariChappalCollection from '../components/PeshawariChappalCollection'
 import Slider from '../components/Slider'
 
