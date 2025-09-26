@@ -17,6 +17,7 @@ const Product = () => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [currentImage, setCurrentImage] = useState(0)
   const pathname = window.location.pathname
   
 
@@ -105,7 +106,7 @@ const Product = () => {
             <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll gap-2 sm:justify-normal sm:w-[18.7%] w-full">
               {productData.image.map((item, index) => (
                 <img
-                  onClick={() => setImage(item)}
+                  onClick={() => setCurrentImage(productData.image.indexOf(item))}
                   src={item}
                   key={index}
                   className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer rounded-md"
@@ -114,8 +115,14 @@ const Product = () => {
               ))}
             </div>
             <div className="w-full sm:w-[80%]">
-              <img className="w-full h-auto rounded-md" src={image} alt={`${productData.name} aritificial jewellery`} loading="eager"/>
+              <div className="relative">
+                <img className="w-full h-auto rounded-md" src={productData.image[currentImage]} alt={`${productData.name} aritificial jewellery`} loading="eager"/>
+              <div className="absolute bottom-4 w-full px-4 flex flex-row-reverse justify-between">
+                <button className="bg-white text-black hover:bg-black hover:text-white rounded-full px-2 py-1 opacity-80 focus:outline-none" onClick={() => setCurrentImage(prev => (prev + 1) % productData.image.length)}>Next</button>
+                <button className="bg-white text-black hover:bg-black hover:text-white rounded-full px-2 py-1 opacity-80 focus:outline-none" onClick={() => setCurrentImage(prev => (prev - 1 + productData.image.length) % productData.image.length)}>Prev</button>
+              </div>
             </div>
+          </div>
           </div>
 
           {/* Product Info */}

@@ -35,25 +35,25 @@ const NavBarTwo = () => {
 
             <div className="hidden md:flex mr-[5vw] basis-[60vw]">
               <NavLink to="/">
-                <motion.a
+                <motion.div
                   key={"Home"}
                   className="text-gray-700 hover:text-gold-600 px-3 py-2 rounded-md text-sm font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {"Home"}
-                </motion.a>
+                </motion.div>
               </NavLink>
 
               <NavLink to="/collection">
-                <motion.a
+                <motion.div
                   key={"Collection"}
                   className="text-gray-700 hover:text-gold-600 px-3 py-2 rounded-md text-sm font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {"Collection"}
-                </motion.a>
+                </motion.div>
               </NavLink>
 
               <div className="mx-auto font-bold md:scale-125 lg:scale-150">
@@ -61,25 +61,25 @@ const NavBarTwo = () => {
               </div>
 
               <NavLink to="/about">
-                <motion.a
+                <motion.div
                   key={"About Us"}
                   className="text-gray-700 hover:text-gold-600 px-3 py-2 rounded-md text-sm font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {"About Us"}
-                </motion.a>
+                </motion.div>
               </NavLink>
 
               <NavLink to="/contact">
-                <motion.a
+                <motion.div
                   key={"Contact"}
                   className="text-gray-700 hover:text-gold-600 px-3 py-2 rounded-md text-sm font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {"Contact"}
-                </motion.a>
+                </motion.div>
               </NavLink>
             </div>
 

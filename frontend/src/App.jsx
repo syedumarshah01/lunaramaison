@@ -26,6 +26,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBarTwo from "./components/NavBarTwo";
 import LoadingSpinner from "./components/LoadingSpinner";
+import LoadingLogo from "./components/LoadingLogo";
 
 
 function ScrollToTop() {
@@ -47,7 +48,7 @@ const App = () => {
         <ScrollToTop />
         <NavBarTwo/>
         <SearchBar />
-      <Suspense fallback={<LoadingSpinner/>}>
+      <Suspense fallback={<LoadingLogo/>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />
