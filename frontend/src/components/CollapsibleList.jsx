@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
 
+
+const SECTIONS = {
+  PRODUCT: 'product',
+  SHIPPING: 'shipping',
+  PAYMENT: 'payment',
+  RETURN: 'return',
+};
+
 const CollapsibleList = ({productData}) => {
 
-  const [isProductDetailsOpen, setProductDetailsOpen] = useState(false);
-  const [isShippingDetailsOpen, setShippingDetailsOpen] = useState(false);
-  const [isPaymentDetailsOpen, setPaymentDetailsOpen] = useState(false);
-  const [isReturnPolicyOpen, setReturnPolicyOpen] = useState(false);
-  const [isCareInstructionsOpen, setCareInstructionsOpen] = useState(false);
+  // const [isProductDetailsOpen, setProductDetailsOpen] = useState(false);
+  // const [isShippingDetailsOpen, setShippingDetailsOpen] = useState(false);
+  // const [isPaymentDetailsOpen, setPaymentDetailsOpen] = useState(false);
+  // const [isReturnPolicyOpen, setReturnPolicyOpen] = useState(false);
+  const [openSection, setOpenSection] = useState(null)
+
+  const handleToggleSection = (sectionKey) => {
+    setOpenSection(openSection === sectionKey ? null : sectionKey)
+  }
+
+  const isSectionOpen = (sectionKey) => openSection === sectionKey
 
   return (
     <div className="space-y-4 max-w-xl mt-5">
@@ -14,16 +28,16 @@ const CollapsibleList = ({productData}) => {
       <div>
         <button
           className="w-full text-left px-4 font-semibold rounded-md focus:outline-none"
-          onClick={() => setProductDetailsOpen(!isProductDetailsOpen)}
+          onClick={() => handleToggleSection(SECTIONS.PRODUCT)}
         >
           Product Details
         </button>
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isProductDetailsOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
+            isSectionOpen(SECTIONS.PRODUCT) ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
           } rounded-md px-4`}
         >
-          {isProductDetailsOpen && <div className='font-normal'>{productData.description}</div>}
+          {isSectionOpen(SECTIONS.PRODUCT) && <div className='font-normal'>{productData.description}</div>}
         </div>
       </div>
 
@@ -32,16 +46,16 @@ const CollapsibleList = ({productData}) => {
       <div>
         <button
           className="w-full text-left px-4 font-semibold rounded-md focus:outline-none"
-          onClick={() => setShippingDetailsOpen(!isShippingDetailsOpen)}
+          onClick={() => handleToggleSection(SECTIONS.SHIPPING)}
         >
           Shipping Details
         </button>
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isShippingDetailsOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
+            isSectionOpen(SECTIONS.SHIPPING) ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
           } rounded-md px-4`}
         >
-          {isShippingDetailsOpen && <div>
+          {isSectionOpen(SECTIONS.SHIPPING) && <div>
             <ul className='list-disc pl-5'>
               <li className='font-normal'>Delivered to doorstep in 3-5 working days.</li>
               <li className='font-normal'>Shipping all over Pakistan, no exceptions.</li>
@@ -58,16 +72,16 @@ const CollapsibleList = ({productData}) => {
       <div>
         <button
           className="w-full text-left px-4 font-semibold rounded-md focus:outline-none"
-          onClick={() => setPaymentDetailsOpen(!isPaymentDetailsOpen)}
+          onClick={() => handleToggleSection(SECTIONS.PAYMENT)}
         >
           Modes of Payment
         </button>
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isPaymentDetailsOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
+            isSectionOpen(SECTIONS.PAYMENT) ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
           } rounded-md px-4`}
         >
-          {isPaymentDetailsOpen && <div>
+          {isSectionOpen(SECTIONS.PAYMENT) && <div>
             <ul className='list-disc pl-5'>
               <li className='font-normal'>Cash On Delivery</li>
               <li className='font-normal'>Easypaisa</li>
@@ -82,16 +96,16 @@ const CollapsibleList = ({productData}) => {
       <div>
         <button
           className="w-full text-left px-4 font-semibold rounded-md focus:outline-none"
-          onClick={() => setReturnPolicyOpen(!isReturnPolicyOpen)}
+          onClick={() => handleToggleSection(SECTIONS.RETURN)}
         >
           Return Policy
         </button>
         <div
           className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            isReturnPolicyOpen ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
+            isSectionOpen(SECTIONS.RETURN) ? 'max-h-[500px] py-4' : 'max-h-0 py-0'
           } rounded-md px-4`}
         >
-          {isReturnPolicyOpen && <div>
+          {isSectionOpen(SECTIONS.RETURN) && <div>
             <p className='font-normal'>
               We accept returns within 10 days, with refunds issued after store manager approval.
               Returns should meet the following conditions:
